@@ -122,3 +122,4 @@ Next.js配置位于 `next.config.js`，包含图片优化等设置。
 - [Tailwind CSS](https://tailwindcss.com/) - CSS框架
 - [Shadcn UI](https://ui.shadcn.com/) - UI组件库
 - [Lucide](https://lucide.dev/) - 图标库 
+
