@@ -48,8 +48,8 @@ export default function LoginPage() {
           })
         }
 
-        // 等待一小段时间确保脚本完全加载
-        await new Promise(resolve => setTimeout(resolve, 100))
+        // 减少等待时间
+        await new Promise(resolve => setTimeout(resolve, 50))
 
         // 清理之前的Vanta效果
         if (vantaRef.current && (window as any).VANTA) {
@@ -92,7 +92,7 @@ export default function LoginPage() {
       // 如果DOM元素还没准备好，等待一下再加载
       const timer = setTimeout(() => {
         loadVantaScripts()
-      }, 100)
+      }, 50)
       
       return () => clearTimeout(timer)
     }
@@ -122,8 +122,8 @@ export default function LoginPage() {
       }
     }
 
-    // 延迟一点时间确保所有脚本都已加载
-    const timer = setTimeout(initializeVanta, 500)
+    // 减少延迟时间
+    const timer = setTimeout(initializeVanta, 200)
     
     return () => clearTimeout(timer)
   }, [theme])
@@ -150,7 +150,14 @@ export default function LoginPage() {
     return (
     <div className="min-h-screen relative flex flex-col">
       {/* Vanta背景 */}
-      <div ref={vantaRef} className="absolute inset-0 z-0"></div>
+      <div 
+        ref={vantaRef} 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundColor: theme === 'dark' ? '#0a0a0a' : '#d7d7d7',
+          transition: 'background-color 0.3s ease'
+        }}
+      ></div>
 
       <Navbar theme={theme} onThemeToggle={toggleTheme} currentPage="login" />
 
