@@ -21,6 +21,27 @@ export default function LoginPage() {
   const { signInWithGoogle, user } = useAuth()
   const router = useRouter()
   const { theme, toggleTheme } = useTheme()
+  
+  // 立即检测当前主题，避免闪烁
+  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light')
+  
+  useEffect(() => {
+    // 立即检测当前主题状态
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
+    const isDark = document.documentElement.classList.contains('dark')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    
+    let detectedTheme: 'light' | 'dark'
+    if (savedTheme) {
+      detectedTheme = savedTheme
+    } else if (isDark) {
+      detectedTheme = 'dark'
+    } else {
+      detectedTheme = prefersDark ? 'dark' : 'light'
+    }
+    
+    setCurrentTheme(detectedTheme)
+  }, [])
 
   useEffect(() => {
     // 动态加载Vanta.js脚本
@@ -72,18 +93,13 @@ export default function LoginPage() {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: theme === 'dark' ? 0x2d3748 : 0x556c91,
-            backgroundColor: theme === 'dark' ? 0x0a0a0a : 0xd7d7d7
+            color: currentTheme === 'dark' ? 0x5e97c8 : 0x556c91,
+            backgroundColor: currentTheme === 'dark' ? 0x0a0a0a : 0xd7d7d7
           })
 
           // 保存实例引用以便后续清理
           ;(vantaRef.current as any).vantaEffect = vantaEffect
           console.log('Vanta background initialized successfully')
-          
-          // 确保背景色正确设置
-          if (vantaRef.current) {
-            vantaRef.current.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#d7d7d7'
-          }
         }
       } catch (error) {
         console.error('Error loading Vanta.js:', error)
@@ -101,7 +117,7 @@ export default function LoginPage() {
       
       return () => clearTimeout(timer)
     }
-  }, [theme]) // 添加theme作为依赖项，当主题切换时重新初始化背景
+  }, [currentTheme]) // 使用currentTheme作为依赖项，当主题切换时重新初始化背景
 
   // 额外的useEffect确保在组件挂载后立即初始化
   useEffect(() => {
@@ -118,17 +134,12 @@ export default function LoginPage() {
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          color: theme === 'dark' ? 0x2d3748 : 0x556c91,
-          backgroundColor: theme === 'dark' ? 0x0a0a0a : 0xd7d7d7
+          color: currentTheme === 'dark' ? 0x5e97c8 : 0x556c91,
+          backgroundColor: currentTheme === 'dark' ? 0x0a0a0a : 0xd7d7d7
         })
 
         ;(vantaRef.current as any).vantaEffect = vantaEffect
         console.log('Vanta background force initialized')
-        
-        // 确保背景色正确设置
-        if (vantaRef.current) {
-          vantaRef.current.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#d7d7d7'
-        }
       }
     }
 
@@ -136,7 +147,7 @@ export default function LoginPage() {
     const timer = setTimeout(initializeVanta, 200)
     
     return () => clearTimeout(timer)
-  }, [theme])
+  }, [currentTheme])
 
   // 如果用户已登录，重定向到个人空间
   useEffect(() => {
@@ -159,25 +170,22 @@ export default function LoginPage() {
 
     return (
     <div className="min-h-screen relative flex flex-col">
-      {/* Vanta背景 */}
+      {/* 主背景 - 确保始终显示正确的背景色 */}
       <div 
-        ref={vantaRef} 
         className="absolute inset-0 z-0"
         style={{
-          backgroundColor: theme === 'dark' ? '#0a0a0a' : '#d7d7d7',
+          backgroundColor: currentTheme === 'dark' ? '#0a0a0a' : '#d7d7d7',
           transition: 'background-color 0.3s ease'
         }}
       ></div>
       
-      {/* 备用背景 - 确保在Vanta加载前显示正确背景 */}
+      {/* Vanta背景效果 */}
       <div 
+        ref={vantaRef} 
         className="absolute inset-0 z-0"
         style={{
-          backgroundColor: theme === 'dark' ? '#0a0a0a' : '#d7d7d7',
-          opacity: 0,
-          transition: 'opacity 0.3s ease'
+          backgroundColor: 'transparent'
         }}
-        id="fallback-background"
       ></div>
 
       <Navbar theme={theme} onThemeToggle={toggleTheme} currentPage="login" />
