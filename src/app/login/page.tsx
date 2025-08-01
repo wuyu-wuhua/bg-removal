@@ -72,7 +72,7 @@ export default function LoginPage() {
             minWidth: 200.00,
             scale: 1.00,
             scaleMobile: 1.00,
-            color: theme === 'dark' ? 0x5e97c8 : 0x556c91,
+            color: theme === 'dark' ? 0x2d3748 : 0x556c91,
             backgroundColor: theme === 'dark' ? 0x0a0a0a : 0xd7d7d7
           })
 
@@ -118,7 +118,7 @@ export default function LoginPage() {
           minWidth: 200.00,
           scale: 1.00,
           scaleMobile: 1.00,
-          color: theme === 'dark' ? 0x5e97c8 : 0x556c91,
+          color: theme === 'dark' ? 0x2d3748 : 0x556c91,
           backgroundColor: theme === 'dark' ? 0x0a0a0a : 0xd7d7d7
         })
 
