@@ -79,6 +79,11 @@ export default function LoginPage() {
           // 保存实例引用以便后续清理
           ;(vantaRef.current as any).vantaEffect = vantaEffect
           console.log('Vanta background initialized successfully')
+          
+          // 确保背景色正确设置
+          if (vantaRef.current) {
+            vantaRef.current.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#d7d7d7'
+          }
         }
       } catch (error) {
         console.error('Error loading Vanta.js:', error)
@@ -119,6 +124,11 @@ export default function LoginPage() {
 
         ;(vantaRef.current as any).vantaEffect = vantaEffect
         console.log('Vanta background force initialized')
+        
+        // 确保背景色正确设置
+        if (vantaRef.current) {
+          vantaRef.current.style.backgroundColor = theme === 'dark' ? '#0a0a0a' : '#d7d7d7'
+        }
       }
     }
 
@@ -157,6 +167,17 @@ export default function LoginPage() {
           backgroundColor: theme === 'dark' ? '#0a0a0a' : '#d7d7d7',
           transition: 'background-color 0.3s ease'
         }}
+      ></div>
+      
+      {/* 备用背景 - 确保在Vanta加载前显示正确背景 */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundColor: theme === 'dark' ? '#0a0a0a' : '#d7d7d7',
+          opacity: 0,
+          transition: 'opacity 0.3s ease'
+        }}
+        id="fallback-background"
       ></div>
 
       <Navbar theme={theme} onThemeToggle={toggleTheme} currentPage="login" />
