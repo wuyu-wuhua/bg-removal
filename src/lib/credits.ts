@@ -1,5 +1,5 @@
-import { createClient } from '@/lib/supabase';
-import { v4 as uuidv4 } from 'uuid';
+import { supabase } from '@/lib/supabase';
+
 
 export async function consumeCreditsForImageEdit(
   userId: string,
@@ -7,7 +7,6 @@ export async function consumeCreditsForImageEdit(
   creditCost: number,
 ): Promise<{ success: boolean; message?: string; transactionId?: string }> {
   try {
-    const supabase = createClient();
 
     // 检查用户积分余额
     const { data: userCredits, error: creditError } = await supabase
@@ -78,7 +77,6 @@ export async function addCreditsForPurchase(
   paymentIntentId: string,
 ): Promise<{ success: boolean; message?: string; transactionId?: string }> {
   try {
-    const supabase = createClient();
 
     // 获取当前积分
     const { data: userCredits, error: creditError } = await supabase

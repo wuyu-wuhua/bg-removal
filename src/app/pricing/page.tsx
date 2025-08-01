@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { 
@@ -29,7 +29,7 @@ import StripePayment from '@/components/payments/StripePayment'
 import { useAuth } from '@/contexts/auth-context'
 import { useCreditsSimple } from '@/hooks/useCredits-simple'
 
-export default function PricingPage() {
+function PricingPageContent() {
   const { t } = useLanguage()
   const { user } = useAuth()
   const { credits, refresh: refreshCredits, loading: creditsLoading } = useCreditsSimple()
@@ -322,4 +322,12 @@ export default function PricingPage() {
         )}
       </div>
     )
+}
+
+export default function PricingPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PricingPageContent />
+    </Suspense>
+  )
 } 
