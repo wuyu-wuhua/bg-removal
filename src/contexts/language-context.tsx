@@ -12,7 +12,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('zh')
+  const [language, setLanguage] = useState<Language>('en') // 默认英语
 
   useEffect(() => {
     // 从localStorage获取保存的语言设置
@@ -20,13 +20,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en')) {
       setLanguage(savedLanguage)
     } else {
-      // 检查浏览器语言设置
-      const browserLanguage = navigator.language.toLowerCase()
-      if (browserLanguage.startsWith('zh')) {
-        setLanguage('zh')
-      } else {
-        setLanguage('en')
-      }
+      // 如果没有保存的语言设置，默认使用英语
+      setLanguage('en')
     }
   }, [])
 

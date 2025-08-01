@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/language-context'
 import { useAuth } from '@/contexts/auth-context'
+import { useTheme } from '@/hooks/useTheme'
 import { 
   Zap, 
   Image as ImageIcon, 
@@ -37,11 +38,11 @@ import HelpWidget from '@/components/help-widget'
 export default function HomePage() {
   const [images, setImages] = useState<ProcessedImage[]>([])
   const [showComparison, setShowComparison] = useState<string | null>(null)
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
   const [helpOpen, setHelpOpen] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const { t } = useLanguage()
   const { user } = useAuth()
+  const { theme, toggleTheme } = useTheme()
 
   // 处理免费开始使用按钮点击
   const handleStartUsing = () => {
@@ -58,35 +59,6 @@ export default function HomePage() {
   const handleViewCases = () => {
     window.location.href = '/cases'
   }
-
-  // 主题切换功能
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    console.log('Theme toggle: changing from', theme, 'to', newTheme)
-    setTheme(newTheme)
-    document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    localStorage.setItem('theme', newTheme)
-  }
-
-  // 初始化主题
-  useEffect(() => {
-    // 检查是否已经设置了主题类
-    const hasThemeClass = document.documentElement.classList.contains('dark') || 
-                         document.documentElement.classList.contains('light');
-    
-    if (!hasThemeClass) {
-      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-      
-      const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light')
-      setTheme(initialTheme)
-      document.documentElement.classList.toggle('dark', initialTheme === 'dark')
-    } else {
-      // 如果已经有主题类，同步状态
-      const isDark = document.documentElement.classList.contains('dark')
-      setTheme(isDark ? 'dark' : 'light')
-    }
-  }, [])
 
   const handleFileSelect = (files: FileList) => {
     Array.from(files).forEach(file => {

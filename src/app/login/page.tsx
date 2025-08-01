@@ -11,43 +11,16 @@ import { Card, CardContent } from '@/components/ui/card'
 import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import HelpWidget from '@/components/help-widget'
+import { useTheme } from '@/hooks/useTheme'
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [helpOpen, setHelpOpen] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
   const vantaRef = useRef<HTMLDivElement>(null)
   const { t } = useLanguage()
   const { signInWithGoogle, user } = useAuth()
   const router = useRouter()
-
-  // 主题切换功能
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    localStorage.setItem('theme', newTheme)
-  }
-
-  // 初始化主题
-  useEffect(() => {
-    // 检查是否已经设置了主题类
-    const hasThemeClass = document.documentElement.classList.contains('dark') || 
-                         document.documentElement.classList.contains('light');
-    
-    if (!hasThemeClass) {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light')
-    setTheme(initialTheme)
-    document.documentElement.classList.toggle('dark', initialTheme === 'dark')
-    } else {
-      // 如果已经有主题类，同步状态
-      const isDark = document.documentElement.classList.contains('dark')
-      setTheme(isDark ? 'dark' : 'light')
-    }
-  }, [])
+  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     // 动态加载Vanta.js脚本

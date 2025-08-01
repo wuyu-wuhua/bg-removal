@@ -39,8 +39,8 @@ export default function RootLayout({
                     document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {
-                  // 如果localStorage不可用，默认使用深色主题
-                  document.documentElement.classList.add('dark');
+                  // 如果localStorage不可用，默认使用浅色主题
+                  document.documentElement.classList.remove('dark');
                 }
               })();
             `,
