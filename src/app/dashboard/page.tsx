@@ -453,6 +453,7 @@ export default function DashboardPage() {
                                 if (transaction.description?.includes('标准')) descText = t('dashboard.creditPackages.standard.name')
                                 else if (transaction.description?.includes('基础')) descText = t('dashboard.creditPackages.basic.name')
                                 else if (transaction.description?.includes('热门')) descText = t('dashboard.creditPackages.premium.name')
+                                else if (transaction.description?.includes('新用户免费积分')) descText = t('common.newUserFreeCredits')
                                 else descText = transaction.description || ''
                                 descText = t('dashboard.credits') + t('dashboard.recentTransactions.type.recharge') + '：' + descText
                               } else if (transaction.type === 'consumption') {
@@ -549,7 +550,11 @@ export default function DashboardPage() {
                                   return (
                                     <tr key={transaction.id || index} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/50">
                                       <td className="py-3 px-4 text-gray-900 dark:text-white">{typeText}</td>
-                                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{transaction.description || '-'}</td>
+                                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
+                                        {transaction.description?.includes('新用户免费积分') 
+                                          ? t('common.newUserFreeCredits') 
+                                          : transaction.description || '-'}
+                                      </td>
                                       <td className={`py-3 px-4 font-semibold ${
                                         transaction.amount > 0 ? 'text-green-600' : 'text-red-600'
                                       }`}>
