@@ -123,8 +123,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <SEOHead 
         pageType="home"
-        title="Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool"
-        description="Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services. Use Remover Fundo to easily achieve professional-level image processing results."
+        title="Remover Fundo - AI Image Processing Platform"
+        description="Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services."
         keywords="Remover Fundo, AI image processing, background removal, image enhancement, object segmentation, professional image editing, AI tools, image processing platform"
       />
       <StructuredData type="website" />

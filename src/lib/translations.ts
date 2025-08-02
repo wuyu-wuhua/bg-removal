@@ -931,9 +931,9 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   zh: {
     metadata: {
-      title: 'Remover Fundo - 专业的AI图像处理平台 | 背景移除工具',
-      description: 'Remover Fundo是专业的AI图像处理平台，为您提供精准的背景移除、物体分割和图像增强服务。使用Remover Fundo，轻松实现专业级图像处理效果。',
-      pageTitle: 'Remover Fundo - 专业的AI图像处理平台 | 背景移除工具'
+      title: 'Remover Fundo - AI图像处理平台',
+      description: 'Remover Fundo专业AI图像处理平台，提供精准背景移除、物体分割和图像增强服务。',
+      pageTitle: 'Remover Fundo - AI图像处理平台'
     },
     logo: {
       alt: 'Remover Fundo',
@@ -2372,9 +2372,9 @@ export const translations: Record<Language, Translations> = {
   },
   en: {
     metadata: {
-      title: 'Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool',
-      description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services. Use Remover Fundo to easily achieve professional-level image processing results.',
-      pageTitle: 'Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool'
+      title: 'Remover Fundo - AI Image Processing Platform',
+      description: 'Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services.',
+      pageTitle: 'Remover Fundo - AI Image Processing Platform'
     },
     logo: {
       alt: 'Remover Fundo',

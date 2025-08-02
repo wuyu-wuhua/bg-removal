@@ -8,8 +8,8 @@ import DynamicHead from '@/components/dynamic-head'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool',
-  description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services. Use Remover Fundo to easily achieve professional-level image processing results.',
+  title: 'Remover Fundo - AI Image Processing Platform',
+  description: 'Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services.',
   keywords: 'Remover Fundo, AI image processing, background removal, image enhancement, object segmentation, professional image editing, AI tools, image processing platform',
   authors: [{ name: 'Remover Fundo Team' }],
   creator: 'Remover Fundo',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://removerfundo.com',
-    title: 'Remover Fundo - Professional AI Image Processing Platform',
-    description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
+    title: 'Remover Fundo - AI Image Processing Platform',
+    description: 'Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services.',
     siteName: 'Remover Fundo',
     images: [
       {
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Remover Fundo - Professional AI Image Processing Platform',
-    description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
+    title: 'Remover Fundo - AI Image Processing Platform',
+    description: 'Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services.',
     images: ['/images/logo.png'],
   },
   icons: {
