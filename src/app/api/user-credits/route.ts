@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-// 强制动态渲染
+// 强制动态渲染，禁用缓存
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -39,11 +40,18 @@ export async function GET(request: NextRequest) {
     // 如果用户没有积分记录，返回0
     const credits = userCredits?.credits || 0
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       credits,
       timestamp: new Date().toISOString()
     })
+    
+    // 添加响应头禁用缓存
+    response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+    response.headers.set('Pragma', 'no-cache')
+    response.headers.set('Expires', '0')
+    
+    return response
 
   } catch (error) {
     console.error('获取用户积分API错误:', error)

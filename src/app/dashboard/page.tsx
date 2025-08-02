@@ -50,6 +50,7 @@ export default function DashboardPage() {
   const [dataFetched, setDataFetched] = useState(false)
   const [paymentOpen, setPaymentOpen] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<any>(null)
+  const [autoRefreshInterval, setAutoRefreshInterval] = useState<NodeJS.Timeout | null>(null)
 
   // 主题切换功能
   const toggleTheme = () => {
@@ -131,7 +132,7 @@ export default function DashboardPage() {
       // 检查是否需要重新获取数据
       const now = Date.now()
       const timeSinceLastFetch = now - lastFetchTime
-      const cacheExpiryTime = 5 * 60 * 1000 // 5分钟缓存
+      const cacheExpiryTime = 30 * 1000 // 30秒缓存，提高实时性
       
       // 如果数据已经获取过且缓存未过期，则跳过重新获取
       if (dataFetched && timeSinceLastFetch < cacheExpiryTime) {
@@ -218,6 +219,23 @@ export default function DashboardPage() {
     }
     
     fetchUserCredits()
+    
+    // 设置定时刷新（每60秒刷新一次）
+    if (user) {
+      const interval = setInterval(() => {
+        setLastFetchTime(0) // 重置缓存时间，强制重新获取
+        setDataFetched(false)
+      }, 60000) // 60秒
+      
+      setAutoRefreshInterval(interval)
+      
+      // 清理定时器
+      return () => {
+        if (interval) {
+          clearInterval(interval)
+        }
+      }
+    }
   }, [user, lastFetchTime, dataFetched])
 
 
