@@ -35,6 +35,9 @@ export interface Translations {
     noCreditCard: string
     noDownload: string
     startJourney: string
+    newUserFreeCredits: string
+    redirecting: string
+    loginSuccessRedirecting: string
   }
 
   // 导航栏
@@ -963,7 +966,10 @@ export const translations: Record<Language, Translations> = {
       joinThousands: '加入数万名用户的选择',
       noCreditCard: '无需信用卡，无需下载软件，立即开始您的AI图像处理之旅。',
       noDownload: '无需下载软件',
-      startJourney: '立即开始您的AI图像处理之旅'
+      startJourney: '立即开始您的AI图像处理之旅',
+      newUserFreeCredits: '新用户免费积分',
+      redirecting: '正在跳转...',
+      loginSuccessRedirecting: '登录成功，正在跳转...'
     },
     navbar: {
       home: '首页',
@@ -2409,7 +2415,10 @@ export const translations: Record<Language, Translations> = {
       joinThousands: 'Join tens of thousands of users\' choice',
       noCreditCard: 'No credit card required, no software download required, start your AI image processing journey immediately.',
       noDownload: 'No software download required',
-      startJourney: 'Start your AI image processing journey immediately'
+      startJourney: 'Start your AI image processing journey immediately',
+      newUserFreeCredits: 'New User Free Credits',
+      redirecting: 'Redirecting...',
+      loginSuccessRedirecting: 'Login successful, redirecting...'
     },
     navbar: {
       home: 'Home',
