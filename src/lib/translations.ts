@@ -2435,7 +2435,7 @@ export const translations: Record<Language, Translations> = {
         ctaPrimary: 'Start Using for Free',
         ctaSecondary: 'View Cases',
         badge: 'AI-Powered Image Processing Platform',
-        mainTitle: 'Background Removal',
+        mainTitle: 'Remover Fundo',
         subTitle: 'Precise Cutout, Intelligent Processing',
         features: {
           title: 'Key Features',

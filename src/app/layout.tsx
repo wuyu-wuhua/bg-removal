@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     apple: '/images/logo.png',
   },
   verification: {
-    google: 'your-google-verification-code',
+    google: 'pZ60H5LQnT63mobooCaSeL42w2efOEwRDDWmevPzA6k',
   },
 }
 
@@ -83,6 +83,32 @@ export default function RootLayout({
                   document.documentElement.classList.remove('dark');
                 }
               })();
+            `,
+          }}
+        />
+        
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D9VQ7NNWPF"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-D9VQ7NNWPF');
+            `,
+          }}
+        />
+        
+        {/* Microsoft Clarity */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "soh506mjkt");
             `,
           }}
         />
