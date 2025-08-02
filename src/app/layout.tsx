@@ -8,7 +8,7 @@ import DynamicHead from '@/components/dynamic-head'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'BgRemoval - Professional AI Image Processing Platform',
+  title: 'Remover Fundo - Professional AI Image Processing Platform',
   description: 'Professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
   icons: {
     icon: '/images/logo.png',

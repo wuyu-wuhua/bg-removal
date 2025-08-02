@@ -214,7 +214,7 @@ export default function BackgroundSelector({
                 {t('upload.editor.selectBackground')}
               </h2>
               <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                搜索由Pexels提供支持的超过30百万个背景图片
+                {t('upload.editor.pexelsDescription')}
               </p>
             </div>
             <Button
@@ -257,21 +257,7 @@ export default function BackgroundSelector({
               </Button>
             </div>
             
-            {/* 热门搜索标签 */}
-            <div className="mt-3 flex flex-wrap gap-2">
-              {['landscape', 'nature', 'sky', 'ocean', 'mountain', 'cityscape'].map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => {
-                    setSearchQuery(tag)
-                    handleSearch(1)
-                  }}
-                  className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
+            {/* 热门搜索标签已删除 */}
           </div>
 
 
@@ -419,7 +405,7 @@ export default function BackgroundSelector({
                 {t('upload.editor.selectBackground')}
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                搜索由Pexels提供支持的超过30百万个背景图片
+                {t('upload.editor.pexelsDescription')}
               </p>
             </div>
             <Button
@@ -461,22 +447,8 @@ export default function BackgroundSelector({
                 )}
               </Button>
             </div>
-            
-            {/* 热门搜索标签 */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              {['landscape', 'nature', 'sky', 'ocean', 'mountain', 'cityscape'].map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => {
-                    setSearchQuery(tag)
-                    handleSearch(1)
-                  }}
-                  className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
+                         
+             {/* 热门搜索标签已删除 */}
           </div>
 
           {/* Error Message */}

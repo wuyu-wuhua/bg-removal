@@ -599,7 +599,7 @@ export default function UploadPage() {
                   </div>
                   
                   {/* 放置背景按钮 - 移到右侧 */}
-                  <div className="absolute top-0 right-2 z-20">
+                  <div className="absolute top-0 -right-16 z-20">
                     {processedImage && !isProcessing && (
                       <Button 
                         onClick={() => setBackgroundSelectorExpanded(!backgroundSelectorExpanded)}

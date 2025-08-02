@@ -385,6 +385,7 @@ export interface Translations {
         imageOpenedInNewWindow: string
         exampleProcessFailed: string
         exampleLoadFailed: string
+        pexelsDescription: string
         // 新增的翻译
         originalImageAlt: string
         processedImageAlt: string
@@ -930,13 +931,13 @@ export interface Translations {
 export const translations: Record<Language, Translations> = {
   zh: {
     metadata: {
-      title: 'BgRemoval - 专业的AI图像处理平台',
+      title: 'Remover Fundo - 专业的AI图像处理平台',
       description: '专业的AI图像处理平台，为您提供精准的背景移除、物体分割和图像增强服务。',
-      pageTitle: 'BgRemoval - 专业的AI图像处理平台'
+      pageTitle: 'Remover Fundo - 专业的AI图像处理平台'
     },
     logo: {
-      alt: 'BgRemoval',
-      text: 'BgRemoval'
+      alt: 'Remover Fundo',
+      text: 'Remover Fundo'
     },
     common: {
       startUsing: '开始使用',
@@ -1608,7 +1609,8 @@ export const translations: Record<Language, Translations> = {
         resetToTransparentSuccess: '已回到透明背景状态',
         imageOpenedInNewWindow: '图片已在新窗口打开，请右键保存',
         exampleProcessFailed: '处理示例图片失败',
-        exampleLoadFailed: '加载示例图片失败，请重试'
+        exampleLoadFailed: '加载示例图片失败，请重试',
+        pexelsDescription: '搜索由Pexels提供支持的超过30百万个背景图片'
       },
       footer: {
         termsAgreement: '上传图片或网址，即代表您同意我们的',
@@ -2364,19 +2366,19 @@ export const translations: Record<Language, Translations> = {
       terms: '用户协议',
       privacy: '隐私政策',
       cookie: 'Cookie政策',
-      copyright: '© 2024 背景移除',
+      copyright: '© 2025 背景移除',
       allRightsReserved: '保留所有权利'
     }
   },
   en: {
     metadata: {
-      title: 'BgRemoval - Professional AI Image Processing Platform',
+      title: 'Remover Fundo - Professional AI Image Processing Platform',
       description: 'Professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
-      pageTitle: 'BgRemoval - Professional AI Image Processing Platform'
+      pageTitle: 'Remover Fundo - Professional AI Image Processing Platform'
     },
     logo: {
-      alt: 'BgRemoval',
-      text: 'BgRemoval'
+      alt: 'Remover Fundo',
+      text: 'Remover Fundo'
     },
     common: {
       startUsing: 'Start Using',
@@ -2414,7 +2416,7 @@ export const translations: Record<Language, Translations> = {
         ctaPrimary: 'Start Using for Free',
         ctaSecondary: 'View Cases',
         badge: 'AI-Powered Image Processing Platform',
-        mainTitle: 'Background Removal',
+        mainTitle: 'Remover Fundo',
         subTitle: 'Precise Cutout, Intelligent Processing',
         features: {
           title: 'Features',
@@ -3048,7 +3050,8 @@ export const translations: Record<Language, Translations> = {
         resetToTransparentSuccess: 'Returned to transparent background state',
         imageOpenedInNewWindow: 'Image opened in new window, please right-click to save',
         exampleProcessFailed: 'Failed to process example image',
-        exampleLoadFailed: 'Failed to load example image, please try again'
+        exampleLoadFailed: 'Failed to load example image, please try again',
+        pexelsDescription: 'Search over 30 million background images powered by Pexels'
       },
       footer: {
         termsAgreement: 'By uploading an image or URL, you agree to our',
@@ -3804,7 +3807,7 @@ export const translations: Record<Language, Translations> = {
       terms: 'Terms of Service',
       privacy: 'Privacy Policy',
       cookie: 'Cookie Policy',
-      copyright: '© 2024 Background Removal',
+      copyright: '© 2025 Remover Fundo',
       allRightsReserved: 'All rights reserved'
     }
   }
