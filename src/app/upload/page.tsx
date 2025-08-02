@@ -368,8 +368,10 @@ export default function UploadPage() {
           setProcessingError(errorMessage)
           // 显示充值提示弹窗
           if (confirm(`${t('upload.editor.insufficientCreditsTitle')}\n\n${t('upload.editor.insufficientCreditsMessage')}`)) {
+            // 用户点击确认，跳转到定价页面
             window.location.href = '/pricing'
           }
+          // 用户点击取消，不做任何操作
           return
         }
         throw new Error(data.error || t('upload.editor.processingError'))

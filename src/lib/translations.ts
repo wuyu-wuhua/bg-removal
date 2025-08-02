@@ -162,6 +162,8 @@ export interface Translations {
   pricing: {
     title: string
     subtitle: string
+    currentBalance: string
+    credits: string
     plans: {
       basic: {
         name: string
@@ -1223,6 +1225,8 @@ export const translations: Record<Language, Translations> = {
     pricing: {
       title: '选择您的积分套餐',
       subtitle: '为您的图像处理需求选择完美的方案',
+      currentBalance: '当前积分余额',
+      credits: '积分',
       plans: {
         basic: {
           name: '基础版',
@@ -2711,6 +2715,8 @@ export const translations: Record<Language, Translations> = {
     pricing: {
       title: 'Choose Your Credit Package',
       subtitle: 'Choose the perfect plan for your image processing needs',
+      currentBalance: 'Current Credit Balance',
+      credits: 'Credits',
       plans: {
         basic: {
           name: 'Basic',

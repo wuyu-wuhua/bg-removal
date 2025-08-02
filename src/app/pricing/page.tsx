@@ -187,7 +187,7 @@ function PricingPageContent() {
            {user && credits && (
              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg inline-block">
                <p className="text-blue-600 dark:text-blue-400 font-medium">
-                 当前积分余额: {credits.credits} 积分
+                 {t('pricing.currentBalance')}: {credits.credits} {t('pricing.credits')}
                </p>
              </div>
            )}
