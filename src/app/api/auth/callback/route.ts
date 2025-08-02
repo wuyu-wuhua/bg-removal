@@ -1,6 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
+import { creditSystem } from '@/lib/database'
 
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url)
@@ -49,6 +50,30 @@ export async function GET(request: NextRequest) {
       error: error?.message,
       user: data?.user?.email 
     })
+
+    // 如果登录成功且是新用户，给予免费积分
+    if (data?.user?.id && !error) {
+      try {
+        // 检查用户是否已有积分记录
+        const { data: userCredits } = await supabase
+          .from('bg_user_credits')
+          .select('user_id')
+          .eq('user_id', data.user.id)
+          .maybeSingle()
+
+        // 如果没有积分记录，说明是新用户，给予10个免费积分
+        if (!userCredits) {
+          const addSuccess = await creditSystem.addCredits(data.user.id, 10, '新用户免费积分')
+          if (addSuccess) {
+            console.log('新用户积分赠送成功:', data.user.id)
+          } else {
+            console.error('新用户积分赠送失败:', data.user.id)
+          }
+        }
+      } catch (creditError) {
+        console.error('检查新用户积分时出错:', creditError)
+      }
+    }
   }
 
   // URL to redirect to after sign in process completes

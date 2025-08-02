@@ -362,6 +362,16 @@ export default function UploadPage() {
       const data = await response.json()
 
       if (!response.ok) {
+        // 专门处理积分不足的情况
+        if (response.status === 402) {
+          const errorMessage = t('upload.editor.insufficientCredits')
+          setProcessingError(errorMessage)
+          // 显示充值提示弹窗
+          if (confirm(`${t('upload.editor.insufficientCreditsTitle')}\n\n${t('upload.editor.insufficientCreditsMessage')}`)) {
+            window.location.href = '/pricing'
+          }
+          return
+        }
         throw new Error(data.error || t('upload.editor.processingError'))
       }
 

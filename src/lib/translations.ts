@@ -432,6 +432,9 @@ export interface Translations {
         tryDirectDownload: string
         directDownloadTriggered: string
         directDownloadFailed: string
+        insufficientCredits: string
+        insufficientCreditsTitle: string
+        insufficientCreditsMessage: string
       }
     footer: {
       termsAgreement: string
@@ -1549,6 +1552,9 @@ export const translations: Record<Language, Translations> = {
         uploadFailed: '图片上传失败，请重试',
         processingError: '处理失败',
         downloadFailed: '下载失败，请右键点击图片选择"另存为"',
+        insufficientCredits: '您的积分已用完，请先充值后再继续使用。',
+        insufficientCreditsTitle: '积分不足！',
+        insufficientCreditsMessage: '您的积分已用完，是否前往充值页面购买积分？',
         exampleImageAlt: '示例图片',
         examplePlaceholder: '示例',
         compressionInfo: '压缩图片',
@@ -3106,6 +3112,9 @@ export const translations: Record<Language, Translations> = {
         tryDirectDownload: 'Try direct download link',
         directDownloadTriggered: 'Direct download link triggered',
         directDownloadFailed: 'Direct download also failed',
+        insufficientCredits: 'Your credits have been used up. Please recharge before continuing.',
+        insufficientCreditsTitle: 'Insufficient Credits!',
+        insufficientCreditsMessage: 'Your credits have been used up. Would you like to go to the recharge page to purchase credits?',
         // 背景选择器相关翻译
         loadMore: 'Load More',
         loading: 'Loading...',
