@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://removerfundo.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /dashboard/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /pricing
+Allow: /cases
+Allow: /upload
+Allow: /help
+Allow: /service
+Allow: /privacy
+Allow: /terms
+Allow: /refund
+
+# Crawl delay
+Crawl-delay: 1 

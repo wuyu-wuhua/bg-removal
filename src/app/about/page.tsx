@@ -26,6 +26,8 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import HelpWidget from '@/components/help-widget'
 import { useLanguage } from '@/contexts/language-context'
+import SEOHead from '@/components/seo-head'
+import StructuredData from '@/components/structured-data'
 
 export default function AboutPage() {
   const { t } = useLanguage()
@@ -67,6 +69,13 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white transition-all duration-500">
+      <SEOHead 
+        pageType="about"
+        title="About Remover Fundo - Professional AI Image Processing Platform"
+        description="Learn about Remover Fundo mission and vision. Remover Fundo is committed to providing professional, efficient, and user-friendly image processing solutions through advanced AI technology."
+        keywords="Remover Fundo, about, mission, vision, AI image processing, background removal, company story"
+      />
+      <StructuredData type="organization" />
       <Navbar theme={theme} onThemeToggle={toggleTheme} currentPage="about" />
 
       {/* Hero Section */}

@@ -8,11 +8,51 @@ import DynamicHead from '@/components/dynamic-head'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Remover Fundo - Professional AI Image Processing Platform',
-  description: 'Professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
+  title: 'Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool',
+  description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services. Use Remover Fundo to easily achieve professional-level image processing results.',
+  keywords: 'Remover Fundo, AI image processing, background removal, image enhancement, object segmentation, professional image editing, AI tools, image processing platform',
+  authors: [{ name: 'Remover Fundo Team' }],
+  creator: 'Remover Fundo',
+  publisher: 'Remover Fundo',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://removerfundo.com',
+    title: 'Remover Fundo - Professional AI Image Processing Platform',
+    description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
+    siteName: 'Remover Fundo',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Remover Fundo - AI Image Processing Platform',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Remover Fundo - Professional AI Image Processing Platform',
+    description: 'Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services.',
+    images: ['/images/logo.png'],
+  },
   icons: {
     icon: '/images/logo.png',
     apple: '/images/logo.png',
+  },
+  verification: {
+    google: 'your-google-verification-code',
   },
 }
 

@@ -26,6 +26,7 @@ import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import HelpWidget from '@/components/help-widget'
 import { useLanguage } from '@/contexts/language-context'
+import SEOHead from '@/components/seo-head'
 
 export default function ServicePage() {
   const { t } = useLanguage()
@@ -67,6 +68,12 @@ export default function ServicePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white transition-all duration-500">
+      <SEOHead 
+        pageType="service"
+        title="Remover Fundo Service Policy - Professional AI Image Processing"
+        description="Remover Fundo service policy and terms. We are committed to providing you with professional, stable, and secure AI image processing services."
+        keywords="Remover Fundo, service policy, terms, AI image processing, background removal, service agreement"
+      />
       <Navbar theme={theme} onThemeToggle={toggleTheme} currentPage="service" />
 
       {/* Hero Section */}

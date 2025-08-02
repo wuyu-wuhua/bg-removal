@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useLanguage } from '@/contexts/language-context'
 import { useAuth } from '@/contexts/auth-context'
 import { useTheme } from '@/hooks/useTheme'
+import SEOHead from '@/components/seo-head'
+import StructuredData from '@/components/structured-data'
 import { 
   Zap, 
   Image as ImageIcon, 
@@ -119,6 +121,14 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      <SEOHead 
+        pageType="home"
+        title="Remover Fundo - Professional AI Image Processing Platform | Background Removal Tool"
+        description="Remover Fundo is a professional AI image processing platform, providing you with precise background removal, object segmentation, and image enhancement services. Use Remover Fundo to easily achieve professional-level image processing results."
+        keywords="Remover Fundo, AI image processing, background removal, image enhancement, object segmentation, professional image editing, AI tools, image processing platform"
+      />
+      <StructuredData type="website" />
+      <StructuredData type="product" />
       <Navbar currentPage="home" theme={theme} onThemeToggle={toggleTheme} />
 
       {/* Hero Section */}
