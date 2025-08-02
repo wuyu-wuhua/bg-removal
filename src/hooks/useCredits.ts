@@ -74,22 +74,11 @@ export function useCredits() {
       if (data) {
         setCredits(data as UserCredits);
       } else {
-        // 如果用户没有积分记录，则创建一个初始记录
-        const { data: newCredit, error: createError } = await supabase
-          .from('bg_user_credits')
-          .insert({
-            user_id: user.id,
-            credits: 0,
-          })
-          .select('*')
-          .single();
-
-        if (createError) {
-          console.warn('创建积分记录失败:', createError.message);
-          // 不抛出错误，只是记录警告
-        } else {
-          setCredits(newCredit as UserCredits);
-        }
+        // 如果用户没有积分记录，可能是新用户或老用户积分记录丢失
+        // 这里不创建积分记录，让OAuth回调处理
+        // 如果OAuth回调也没有处理，用户需要重新登录或联系客服
+        console.log('用户没有积分记录，等待OAuth回调处理或用户重新登录');
+        setCredits(null);
       }
     } catch (err: any) {
       console.warn('获取用户积分失败:', err.message);

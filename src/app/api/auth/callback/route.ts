@@ -54,21 +54,73 @@ export async function GET(request: NextRequest) {
     // 如果登录成功且是新用户，给予免费积分
     if (data?.user?.id && !error) {
       try {
+        console.log('检查新用户积分赠送:', data.user.id)
+        
         // 检查用户是否已有积分记录
-        const { data: userCredits } = await supabase
+        const { data: userCredits, error: checkError } = await supabase
           .from('bg_user_credits')
-          .select('user_id')
+          .select('user_id, credits')
           .eq('user_id', data.user.id)
           .maybeSingle()
 
-        // 如果没有积分记录，说明是新用户，给予10个免费积分
-        if (!userCredits) {
-          const addSuccess = await creditSystem.addCredits(data.user.id, 10, '新用户免费积分')
-          if (addSuccess) {
-            console.log('新用户积分赠送成功:', data.user.id)
+        if (checkError) {
+          console.error('检查用户积分记录失败:', checkError)
+        }
+
+        // 检查用户是否是新用户（通过注册时间判断）
+        const isNewUser = data.user.created_at && 
+          new Date(data.user.created_at).getTime() > new Date().getTime() - (24 * 60 * 60 * 1000) // 24小时内注册的用户
+
+        // 如果没有积分记录且是新用户，给予10个免费积分
+        if (!userCredits && isNewUser) {
+          console.log('新用户首次登录，赠送10积分:', data.user.id, '注册时间:', data.user.created_at)
+          
+          // 直接创建积分记录，避免与useCredits hook冲突
+          const { data: newCredits, error: createError } = await supabase
+            .from('bg_user_credits')
+            .insert({
+              user_id: data.user.id,
+              credits: 10,
+            })
+            .select('*')
+            .single()
+
+          if (createError) {
+            console.error('创建新用户积分记录失败:', createError)
           } else {
-            console.error('新用户积分赠送失败:', data.user.id)
+            console.log('新用户积分记录创建成功:', newCredits)
+            
+            // 记录交易
+            const { error: transactionError } = await supabase
+              .from('bg_credit_transactions')
+              .insert({
+                user_id: data.user.id,
+                amount: 10,
+                type: 'recharge',
+                description: '新用户免费积分'
+              })
+
+            if (transactionError) {
+              console.error('记录新用户积分交易失败:', transactionError)
+            } else {
+              console.log('新用户积分赠送完成:', data.user.id)
+            }
           }
+        } else if (!userCredits && !isNewUser) {
+          // 老用户但没有积分记录，创建0积分记录（避免重复检查）
+          console.log('老用户没有积分记录，创建0积分记录:', data.user.id)
+          const { error: createError } = await supabase
+            .from('bg_user_credits')
+            .insert({
+              user_id: data.user.id,
+              credits: 0,
+            })
+
+          if (createError) {
+            console.error('创建老用户积分记录失败:', createError)
+          }
+        } else {
+          console.log('用户已有积分记录:', userCredits?.credits || 0, '积分')
         }
       } catch (creditError) {
         console.error('检查新用户积分时出错:', creditError)

@@ -230,25 +230,37 @@ export const creditSystem: CreditSystem = {
   },
 
   async addCredits(userId: string, credits: number, description?: string): Promise<boolean> {
-    const userCredits = await databaseOperations.getUserCredits(userId)
-    const currentCredits = userCredits?.credits || 0
-    const newBalance = currentCredits + credits
+    try {
+      const userCredits = await databaseOperations.getUserCredits(userId)
+      const currentCredits = userCredits?.credits || 0
+      const newBalance = currentCredits + credits
 
-    // 更新积分
-    const updateSuccess = await databaseOperations.updateUserCredits(userId, newBalance)
-    if (!updateSuccess) {
+      // 更新积分
+      const updateSuccess = await databaseOperations.updateUserCredits(userId, newBalance)
+      if (!updateSuccess) {
+        console.error('更新用户积分失败:', userId)
+        return false
+      }
+
+      // 记录交易
+      const transactionSuccess = await databaseOperations.addTransaction({
+        user_id: userId,
+        amount: credits,
+        type: 'recharge',
+        description: description || '积分充值'
+      })
+
+      if (!transactionSuccess) {
+        console.error('记录交易失败:', userId)
+        return false
+      }
+
+      console.log(`成功为用户 ${userId} 添加 ${credits} 积分，新余额: ${newBalance}`)
+      return true
+    } catch (error) {
+      console.error('添加积分时出错:', error)
       return false
     }
-
-    // 记录交易
-    const transactionSuccess = await databaseOperations.addTransaction({
-      user_id: userId,
-      amount: credits,
-      type: 'recharge',
-      description: description || '积分充值'
-    })
-
-    return transactionSuccess
   },
 
   async getBalance(userId: string): Promise<number> {
