@@ -971,7 +971,7 @@ export const translations: Record<Language, Translations> = {
       hero: {
         title: '准备好体验Remover Fundo AI的魅力了吗？',
         subtitle: '加入数万名用户的选择',
-        description: 'Remover Fundo是专业的AI图像处理平台，无需信用卡，无需下载软件，立即开始您的Remover Fundo图像处理之旅。',
+        description: 'Remover Fundo是专业的AI图像处理平台，无需信用卡，无需下载软件，立即开始您的图像处理之旅。',
         ctaPrimary: '免费开始使用',
         ctaSecondary: '查看案例',
         badge: 'Remover Fundo AI驱动的图像处理平台',
@@ -987,12 +987,12 @@ export const translations: Record<Language, Translations> = {
       },
       stats: {
         title: 'Remover Fundo数据说话,实力见证',
-        subtitle: '全球用户的信赖选择 - Remover Fundo专业服务',
+        subtitle: '全球用户的信赖选择 - 专业服务',
         cards: [
           {
             title: 'Remover Fundo活跃用户',
             value: '50K+',
-            description: '来自全球的Remover Fundo专业用户',
+            description: '来自全球的专业用户',
             trend: '增长',
             trendValue: '+15%'
           },
@@ -1000,17 +1000,17 @@ export const translations: Record<Language, Translations> = {
             title: 'Remover Fundo行业领先',
             value: '1M+',
             subtitle: '图片处理量',
-            description: 'Remover Fundo每月处理超过100万张图片'
+            description: '每月处理超过100万张图片'
           },
           {
             title: 'Remover Fundo准确率',
             value: '99.9%',
-            description: 'Remover Fundo AI算法的准确率'
+            description: 'AI算法的准确率'
           },
           {
             title: 'Remover Fundo用户满意度',
             value: '99.9%',
-            description: 'Remover Fundo客户满意度评分',
+            description: '客户满意度评分',
             trend: '增长',
             trendValue: '+12%'
           }
@@ -1018,7 +1018,7 @@ export const translations: Record<Language, Translations> = {
       },
       steps: {
         title: 'Remover Fundo三步完成,简单高效',
-        subtitle: '无需专业技能,人人都能使用Remover Fundo',
+        subtitle: '无需专业技能,人人都能使用',
         description: 'Remover Fundo简化的工作流程,让图像处理变得前所未有的简单',
         items: [
           {
@@ -1049,36 +1049,36 @@ export const translations: Record<Language, Translations> = {
       },
       features: {
         title: 'Remover Fundo强大功能，简单易用',
-        subtitle: 'Remover Fundo一站式图像处理解决方案',
-        description: 'Remover Fundo从背景移除到图像增强，我们提供全方位的AI图像处理服务',
+        subtitle: '一站式图像处理解决方案',
+        description: '从背景移除到图像增强，我们提供全方位的AI图像处理服务',
         intelligentCutout: {
           title: 'Remover Fundo智能抠图',
-          description: 'Remover Fundo使用深度学习算法，精确识别并分离前景与背景，支持复杂场景和细节处理。',
+          description: '使用深度学习算法，精确识别并分离前景与背景，支持复杂场景和细节处理。',
           features: ['Remover Fundo毫秒级处理速度', '99%+准确率', '支持复杂背景']
         },
         imageEnhancement: {
           title: 'Remover Fundo图像增强',
-          description: 'Remover Fundo自动化优化图像质量，提升清晰度，对比度和色彩饱和度，让您的图片更加出色。',
+          description: '自动化优化图像质量，提升清晰度，对比度和色彩饱和度，让您的图片更加出色。',
           features: ['Remover Fundo自动色彩校正', '降噪处理', '细节增强']
         },
         batchProcessing: {
           title: 'Remover Fundo批量处理',
-          description: 'Remover Fundo支持同时处理多张图片，大幅提升工作效率，适合电商、设计等批量需求。',
+          description: '支持同时处理多张图片，大幅提升工作效率，适合电商、设计等批量需求。',
           features: ['Remover Fundo支持100+张同时处理', '保持一致质量', '自动命名']
         },
         step1: {
           title: 'Remover Fundo上传图片',
-          description: 'Remover Fundo支持多种格式，拖拽上传更便捷',
+          description: '支持多种格式，拖拽上传更便捷',
           features: ['Remover Fundo支持JPG、PNG、WebP', '拖拽上传', '批量处理', '云端存储']
         },
         step2: {
           title: 'Remover Fundo AI智能处理',
-          description: 'Remover Fundo先进的AI算法，自动识别并处理',
+          description: '先进的AI算法，自动识别并处理',
           features: ['Remover Fundo智能识别', '自动优化', '实时预览', '一键处理']
         },
         step3: {
           title: 'Remover Fundo下载结果',
-          description: 'Remover Fundo高质量输出，多种格式选择',
+          description: '高质量输出，多种格式选择',
           features: ['Remover Fundo高清输出', '多种格式', '批量下载', '云端同步']
         },
         step4: {
@@ -1090,13 +1090,13 @@ export const translations: Record<Language, Translations> = {
       },
               caseStudy: {
           title: 'Remover Fundo案例展示',
-          subtitle: '见证Remover Fundo AI的无限可能',
-          description: '探索Remover Fundo AI图像处理技术的真实案例，感受专业级的处理效果',
+          subtitle: '见证AI的无限可能',
+          description: '探索AI图像处理技术的真实案例，感受专业级的处理效果',
           viewAll: '查看全部Remover Fundo案例'
         },
       testimonials: {
         title: 'Remover Fundo用户评价',
-        subtitle: '加入成千上万信任 Remover Fundo 满足其图像编辑需求的满意用户的行列',
+        subtitle: '加入成千上万信任我们满足其图像编辑需求的满意用户的行列',
         rating: '基于10,000+条评价',
         reviews: [
           {
@@ -1187,7 +1187,7 @@ export const translations: Record<Language, Translations> = {
       },
       faq: {
         title: 'Remover Fundo常见问题解答',
-        subtitle: '快速了解Remover Fundo服务',
+        subtitle: '快速了解我们的服务',
         description: '如果您有其他关于Remover Fundo的问题，请随时联系客户团队',
         questions: [
           {
@@ -1219,7 +1219,7 @@ export const translations: Record<Language, Translations> = {
     },
     pricing: {
       title: '选择您的Remover Fundo积分套餐',
-      subtitle: '为您的Remover Fundo图像处理需求选择完美的方案',
+              subtitle: '为您的图像处理需求选择完美的方案',
       plans: {
         basic: {
           name: '基础版',
@@ -1270,11 +1270,11 @@ export const translations: Record<Language, Translations> = {
       },
       howToUse: {
         title: '如何使用Remover Fundo积分',
-        creditRate: '1积分 = Remover Fundo处理1张图片',
+        creditRate: '1积分 = 处理1张图片',
         steps: [
-          '上传图片并选择Remover Fundo处理类型',
-          'Remover Fundo处理完成后自动扣除积分',
-          '在Remover Fundo仪表板中查看积分余额'
+          '上传图片并选择处理类型',
+          '处理完成后自动扣除积分',
+          '在仪表板中查看积分余额'
         ]
       },
       faq: {
@@ -1282,15 +1282,15 @@ export const translations: Record<Language, Translations> = {
         questions: [
           {
             question: 'Remover Fundo积分如何使用?',
-            answer: '每次使用Remover Fundo AI功能处理图片时会消耗相应积分。不同功能消耗的积分数量不同，图像上色通常消耗4-6积分，图像超分消耗3-5积分。'
+            answer: '每次使用AI功能处理图片时会消耗相应积分。不同功能消耗的积分数量不同，图像上色通常消耗4-6积分，图像超分消耗3-5积分。'
           },
           {
             question: 'Remover Fundo积分有有效期吗?',
-            answer: '是的，Remover Fundo积分自购买之日起12个月内有效。我们建议您根据实际使用频率选择合适的Remover Fundo套餐。'
+            answer: '是的，积分自购买之日起12个月内有效。我们建议您根据实际使用频率选择合适的套餐。'
           },
           {
             question: 'Remover Fundo支持哪些支付方式?',
-            answer: 'Remover Fundo支持信用卡、借记卡等多种支付方式，所有支付都通过Stripe安全处理，确保您的支付信息安全。'
+            answer: '我们支持信用卡、借记卡等多种支付方式，所有支付都通过Stripe安全处理，确保您的支付信息安全。'
           },
           {
             question: '如何获得免费积分?',
@@ -1490,11 +1490,11 @@ export const translations: Record<Language, Translations> = {
     },
     upload: {
       title: '使用Remover Fundo上传一张图片以消除背景',
-      subtitle: '上传您的图片到Remover Fundo进行Remover Fundo背景移除',
+              subtitle: '上传您的图片进行背景移除',
       backToHome: '返回首页',
       uploadArea: {
-        title: 'Remover Fundo上传图片',
-        subtitle: 'Remover Fundo或者拖放一个文件',
+        title: '上传图片',
+        subtitle: '或者拖放一个文件',
         dragDrop: '或者拖放一个文件',
         or: '或者',
         paste: '粘贴图片或',
@@ -1625,7 +1625,7 @@ export const translations: Record<Language, Translations> = {
       search: '搜索Remover Fundo帮助',
       backToHome: '返回Remover Fundo首页',
       badge: 'Remover Fundo帮助中心',
-      description: '找到您需要的所有Remover Fundo帮助信息，快速解决Remover Fundo使用过程中的问题',
+              description: '找到您需要的所有帮助信息，快速解决使用过程中的问题',
       searchPlaceholder: '搜索帮助内容...',
       views: '次浏览',
       categories: {
@@ -2354,7 +2354,7 @@ export const translations: Record<Language, Translations> = {
       }
     },
     footer: {
-      description: 'Remover Fundo是专业的AI图像处理平台，为您提供精准的Remover Fundo背景移除、Remover Fundo物体分割和Remover Fundo图像增强服务。',
+              description: 'Remover Fundo是专业的AI图像处理平台，为您提供精准的背景移除、物体分割和图像增强服务。',
       quickLinks: '快速链接',
       support: '支持',
       aboutUs: '关于我们',
