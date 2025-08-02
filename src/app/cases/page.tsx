@@ -21,6 +21,7 @@ import HelpWidget from '@/components/help-widget'
 export default function CasesPage() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
   const [helpOpen, setHelpOpen] = useState(false)
+  const [sliderPositions, setSliderPositions] = useState<{ [key: number]: number }>({})
   const { t } = useLanguage()
   const { user } = useAuth()
 
@@ -57,6 +58,36 @@ export default function CasesPage() {
     } else {
       window.location.href = '/login'
     }
+  }
+
+  // 处理滑块位置变化
+  const handleSliderPositionChange = (caseId: number, position: number) => {
+    setSliderPositions(prev => ({
+      ...prev,
+      [caseId]: position
+    }))
+  }
+
+  // 处理按钮点击事件
+  const handleViewResult = (caseId: number) => {
+    setSliderPositions(prev => ({
+      ...prev,
+      [caseId]: 0 // 滑块移到最左侧，显示结果图
+    }))
+  }
+
+  const handleCompare = (caseId: number) => {
+    setSliderPositions(prev => ({
+      ...prev,
+      [caseId]: 50 // 滑块移到中间，显示对比
+    }))
+  }
+
+  const handleViewOriginal = (caseId: number) => {
+    setSliderPositions(prev => ({
+      ...prev,
+      [caseId]: 100 // 滑块移到最右侧，显示原图
+    }))
   }
 
   return (
@@ -128,20 +159,22 @@ export default function CasesPage() {
                   {/* Image Comparison */}
                   <div className="mb-8">
                     <ImageComparisonSlider 
-                      originalImage={caseItem.id === 1 ? '/images/外国女人.jpg' : 
-                                   caseItem.id === 2 ? '/images/鸟.jpg' :
+                      originalImage={caseItem.id === 1 ? '/images/外国男人.jpg' : 
+                                   caseItem.id === 2 ? '/images/猫猫.jpg' :
                                    caseItem.id === 3 ? '/images/礼物.jpg' :
                                    caseItem.id === 4 ? '/images/车.jpg' :
-                                   caseItem.id === 5 ? '/images/猫狗.jpg' :
+                                   caseItem.id === 5 ? '/images/苹果.jpg' :
                                    '/images/高楼.jpg'}
-                      processedImage={caseItem.id === 1 ? '/images/外国女人后.jpg' : 
-                                    caseItem.id === 2 ? '/images/鸟后.jpg' :
+                      processedImage={caseItem.id === 1 ? '/images/外国男人后.jpg' : 
+                                    caseItem.id === 2 ? '/images/猫猫后.jpg' :
                                     caseItem.id === 3 ? '/images/礼物后.jpg' :
                                     caseItem.id === 4 ? '/images/车后.jpg' :
-                                    caseItem.id === 5 ? '/images/猫狗后.jpg' :
+                                    caseItem.id === 5 ? '/images/苹果后.jpg' :
                                     '/images/高楼后.jpg'}
                       showPercentage={true}
                       transparentBackground="checkerboard"
+                      sliderPosition={sliderPositions[caseItem.id]}
+                      onSliderPositionChange={(position) => handleSliderPositionChange(caseItem.id, position)}
                     />
                   </div>
 
@@ -175,12 +208,14 @@ export default function CasesPage() {
                       variant="outline" 
                       size="lg"
                       className="flex-1 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white border-gray-300 dark:border-gray-600"
+                      onClick={() => handleViewResult(caseItem.id)}
                     >
                       查看结果
                     </Button>
                     <Button 
                       size="lg"
                       className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+                      onClick={() => handleCompare(caseItem.id)}
                     >
                       对比
                     </Button>
@@ -188,6 +223,7 @@ export default function CasesPage() {
                       variant="outline" 
                       size="lg"
                       className="flex-1 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white border-gray-300 dark:border-gray-600"
+                      onClick={() => handleViewOriginal(caseItem.id)}
                     >
                       查看原图
                     </Button>
@@ -209,17 +245,17 @@ export default function CasesPage() {
             <p className="text-xl mb-8 opacity-90">
               {t('cases.cta.description')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-row gap-4 justify-center">
               <Button 
                 onClick={handleStartUsing}
-                className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-base font-semibold"
+                className="flex-1 sm:flex-none sm:w-auto bg-white dark:bg-gray-900 text-blue-600 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 border-0 dark:border border-white dark:border-white px-4 sm:px-8 py-3 text-base font-semibold"
               >
                 {t('cases.cta.startUsing')}
               </Button>
-              <Link href="/pricing">
+              <Link href="/pricing" className="flex-1 sm:flex-none sm:w-auto">
                 <Button 
                   variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 text-base font-semibold"
+                  className="flex-1 sm:w-auto border-white text-blue-600 dark:text-white hover:bg-white/90 hover:text-blue-600 hover:border-white/80 px-8 py-3 text-base font-semibold transition-all duration-200"
                 >
                   {t('cases.cta.viewPricing')}
                 </Button>

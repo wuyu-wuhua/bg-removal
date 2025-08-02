@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Bell, Sun, Moon, Menu, User, LogOut, Settings } from 'lucide-react'
+import { Sun, Moon, Menu, User, LogOut, Settings } from 'lucide-react'
 import { Button } from './ui/button'
 import TransparentLogo from './transparent-logo'
 import LanguageSwitcher from './language-switcher'
@@ -92,9 +92,6 @@ export default function Navbar({ currentPage = 'home', theme = 'dark', onThemeTo
           {/* Right side buttons */}
           <div className="flex items-center space-x-4 ml-auto">
             {/* Icon buttons */}
-            <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              <Bell className="h-5 w-5" />
-            </button>
             <LanguageSwitcher currentLanguage={language} onLanguageChange={setLanguage} />
             <button 
               onClick={onThemeToggle}

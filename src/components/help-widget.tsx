@@ -57,27 +57,41 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
     }
   }
 
-  // 处理拖拽开始
-  const handleMouseDown = (e: React.MouseEvent) => {
+  // 处理拖拽开始（鼠标和触摸）
+  const handleDragStart = (clientX: number, clientY: number) => {
     if (isOpen) return // 如果模态框打开，不允许拖拽
     
     const rect = widgetRef.current?.getBoundingClientRect()
     if (rect) {
       setDragOffset({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: clientX - rect.left,
+        y: clientY - rect.top
       })
       setIsDragging(true)
     }
   }
 
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
+    handleDragStart(e.clientX, e.clientY)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const touch = e.touches[0]
+    if (touch) {
+      handleDragStart(touch.clientX, touch.clientY)
+    }
+  }
+
   // 处理拖拽移动
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (clientX: number, clientY: number) => {
       if (!isDragging) return
 
-      const newX = e.clientX - dragOffset.x
-      const newY = e.clientY - dragOffset.y
+      const newX = clientX - dragOffset.x
+      const newY = clientY - dragOffset.y
 
       // 限制在视窗范围内
       const maxX = window.innerWidth - 60
@@ -89,18 +103,38 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
       })
     }
 
-    const handleMouseUp = () => {
+    const handleMouseMove = (e: MouseEvent) => {
+      e.preventDefault()
+      handleMove(e.clientX, e.clientY)
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      if (e.touches.length > 0) {
+        const touch = e.touches[0]
+        handleMove(touch.clientX, touch.clientY)
+      }
+    }
+
+    const handleDragEnd = () => {
       setIsDragging(false)
     }
 
     if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove)
-      document.addEventListener('mouseup', handleMouseUp)
+      document.addEventListener('mousemove', handleMouseMove, { passive: false })
+      document.addEventListener('mouseup', handleDragEnd)
+      document.addEventListener('touchmove', handleTouchMove, { passive: false })
+      document.addEventListener('touchend', handleDragEnd)
+      document.addEventListener('touchcancel', handleDragEnd)
     }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('mouseup', handleDragEnd)
+      document.removeEventListener('touchmove', handleTouchMove)
+      document.removeEventListener('touchend', handleDragEnd)
+      document.removeEventListener('touchcancel', handleDragEnd)
     }
   }, [isDragging, dragOffset])
 
@@ -132,13 +166,16 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
-          transform: isDragging ? 'scale(1.1)' : undefined
+          transform: isDragging ? 'scale(1.1)' : undefined,
+          touchAction: 'none'
         }}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        onTouchMove={(e) => e.preventDefault()}
         onClick={handleClick}
       >
-        <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
-          <Headphones className="w-5 h-5 text-white" />
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
+          <Headphones className="w-4 h-4 md:w-5 md:h-5 text-white" />
         </div>
       </div>
 

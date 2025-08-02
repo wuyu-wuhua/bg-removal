@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { ProcessedImage } from '@/types'
+import { useLanguage } from '@/contexts/language-context'
 
 interface ImageResultProps {
   image: ProcessedImage
@@ -21,6 +22,7 @@ export function ImageResult({
   onDownload,
   onRemove
 }: ImageResultProps) {
+  const { t } = useLanguage()
   return (
     <Card className="bg-gray-800 border-gray-700 overflow-hidden">
       <div className="relative aspect-square bg-gray-700">
@@ -28,7 +30,7 @@ export function ImageResult({
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-              <p className="text-gray-300 font-medium">处理中...</p>
+              <p className="text-gray-300 font-medium">{t('upload.editor.processing')}</p>
               <div className="w-48 mt-4">
                 <Progress value={image.progress} className="h-2" />
               </div>
@@ -60,7 +62,7 @@ export function ImageResult({
           <h3 className="font-medium text-white truncate">{image.name}</h3>
           {!image.processing && (
             <span className="bg-green-600/20 text-green-400 text-xs px-2 py-1 rounded-full">
-              完成
+              {t('upload.editor.processingComplete')}
             </span>
           )}
         </div>
@@ -72,7 +74,7 @@ export function ImageResult({
             className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600"
           >
             <Download className="h-4 w-4 mr-2" />
-            <span>下载</span>
+            <span>{t('upload.editor.download')}</span>
           </Button>
           <Button
             onClick={() => onRemove(image.id)}

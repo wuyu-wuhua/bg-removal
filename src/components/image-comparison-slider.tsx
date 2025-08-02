@@ -9,30 +9,45 @@ interface ImageComparisonSliderProps {
   processedImage: string
   showPercentage?: boolean
   transparentBackground?: 'checkerboard' | 'white' | 'black' | 'none'
+  sliderPosition?: number
+  onSliderPositionChange?: (position: number) => void
 }
 
 export function ImageComparisonSlider({ 
   originalImage, 
   processedImage, 
   showPercentage = false,
-  transparentBackground = 'checkerboard'
+  transparentBackground = 'checkerboard',
+  sliderPosition: externalSliderPosition,
+  onSliderPositionChange
 }: ImageComparisonSliderProps) {
   const { t } = useLanguage()
-  const [sliderPosition, setSliderPosition] = useState(50)
+  const [internalSliderPosition, setInternalSliderPosition] = useState(50)
+  const sliderPosition = externalSliderPosition !== undefined ? externalSliderPosition : internalSliderPosition
   const [isDragging, setIsDragging] = useState(false)
+  const [dragPosition, setDragPosition] = useState(sliderPosition)
   const containerRef = useRef<HTMLDivElement>(null)
   const sliderRef = useRef<HTMLDivElement>(null)
+  const currentPositionRef = useRef(sliderPosition)
 
   // 直接更新滑块位置，避免状态更新延迟
   const updateSliderPosition = useCallback((percentage: number) => {
     const clampedPercentage = Math.max(0, Math.min(100, percentage))
-    setSliderPosition(clampedPercentage)
     
-    // 直接更新滑块元素位置，确保同步
+    // 拖动时直接更新DOM，避免状态更新导致的卡顿
     if (sliderRef.current) {
       sliderRef.current.style.left = `${clampedPercentage}%`
     }
-  }, [])
+    
+    // 只有在非拖动状态或拖动结束时才更新状态
+    if (!isDragging) {
+      if (onSliderPositionChange) {
+        onSliderPositionChange(clampedPercentage)
+      } else {
+        setInternalSliderPosition(clampedPercentage)
+      }
+    }
+  }, [onSliderPositionChange, isDragging])
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -42,20 +57,38 @@ export function ImageComparisonSlider({
   }
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!containerRef.current) return
+    if (!containerRef.current || !isDragging) return
     
     e.preventDefault()
     const rect = containerRef.current.getBoundingClientRect()
     const x = e.clientX - rect.left
-    const percentage = (x / rect.width) * 100
-    updateSliderPosition(percentage)
-  }, [updateSliderPosition])
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    
+    // 拖动时更新DOM和状态，让图片实时跟随
+    if (sliderRef.current) {
+      sliderRef.current.style.left = `${percentage}%`
+      currentPositionRef.current = percentage
+      setDragPosition(percentage)
+    }
+  }, [isDragging])
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false)
+    
+    // 拖动结束时更新状态
+    const finalPosition = currentPositionRef.current
+    if (onSliderPositionChange) {
+      onSliderPositionChange(finalPosition)
+    } else {
+      setInternalSliderPosition(finalPosition)
+    }
+    
+    // 重置拖动位置
+    setDragPosition(finalPosition)
+    
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseUp)
-  }, [handleMouseMove])
+  }, [handleMouseMove, onSliderPositionChange])
 
   const handleTouchStart = (e: React.TouchEvent) => {
     e.preventDefault()
@@ -69,13 +102,44 @@ export function ImageComparisonSlider({
     const rect = containerRef.current.getBoundingClientRect()
     const touch = e.touches[0]
     const x = touch.clientX - rect.left
-    const percentage = (x / rect.width) * 100
-    updateSliderPosition(percentage)
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    
+    // 拖动时更新DOM和状态，让图片实时跟随
+    if (sliderRef.current) {
+      sliderRef.current.style.left = `${percentage}%`
+      currentPositionRef.current = percentage
+      setDragPosition(percentage)
+    }
   }
 
   const handleReactTouchEnd = () => {
     setIsDragging(false)
+    
+    // 触摸结束时更新状态
+    const finalPosition = currentPositionRef.current
+    if (onSliderPositionChange) {
+      onSliderPositionChange(finalPosition)
+    } else {
+      setInternalSliderPosition(finalPosition)
+    }
+    
+    // 重置拖动位置
+    setDragPosition(finalPosition)
   }
+
+  // 同步外部滑块位置
+  useEffect(() => {
+    if (externalSliderPosition !== undefined && sliderRef.current) {
+      sliderRef.current.style.left = `${externalSliderPosition}%`
+      currentPositionRef.current = externalSliderPosition
+    }
+  }, [externalSliderPosition])
+
+  // 同步内部滑块位置
+  useEffect(() => {
+    currentPositionRef.current = sliderPosition
+    setDragPosition(sliderPosition)
+  }, [sliderPosition])
 
   useEffect(() => {
     return () => {
@@ -128,7 +192,8 @@ export function ImageComparisonSlider({
         <div 
           className="absolute inset-0 overflow-hidden"
           style={{ 
-            clipPath: `inset(0px ${100 - sliderPosition}% 0px 0px)`
+            clipPath: `inset(0px ${100 - (isDragging ? dragPosition : sliderPosition)}% 0px 0px)`,
+            transition: isDragging ? 'none' : 'clip-path 0.1s ease-out'
           }}
         >
           <img 
@@ -147,7 +212,8 @@ export function ImageComparisonSlider({
         <div 
           className="absolute inset-0 overflow-hidden"
           style={{ 
-            clipPath: `inset(0px 0px 0px ${sliderPosition}%)`
+            clipPath: `inset(0px 0px 0px ${isDragging ? dragPosition : sliderPosition}%)`,
+            transition: isDragging ? 'none' : 'clip-path 0.1s ease-out'
           }}
         >
           {/* 透明背景层 - 放在结果图底下 */}
@@ -194,13 +260,13 @@ export function ImageComparisonSlider({
         {/* 可拖拽的分割线 */}
         <div 
           ref={sliderRef}
-          className={`absolute top-0 bottom-0 z-10 shadow-lg transition-[width,background-color,box-shadow] duration-200 ease-out pointer-events-none ${
+          className={`absolute top-0 bottom-0 z-10 shadow-lg pointer-events-none ${
             isDragging ? 'bg-blue-400 w-1' : 'bg-white w-0.5 hover:bg-blue-400 hover:w-1'
           }`}
           style={{ 
-            left: `${sliderPosition}%`, 
+            left: `${isDragging ? dragPosition : sliderPosition}%`, 
             transform: 'translateX(-50%)',
-            transition: isDragging ? 'none' : 'width 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out'
+            transition: isDragging ? 'none' : 'all 0.2s ease-out'
           }}
         >
           <div className={`absolute top-1/2 left-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 transform cursor-ew-resize items-center justify-center rounded-full border-2 shadow-xl backdrop-blur-sm transition-all duration-200 ease-out ${

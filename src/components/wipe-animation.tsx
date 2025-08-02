@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/contexts/language-context'
 
 interface WipeAnimationProps {
   originalImage: string
@@ -20,6 +21,7 @@ export function WipeAnimation({
   duration = 1500,
   className
 }: WipeAnimationProps) {
+  const { t } = useLanguage()
   const [progress, setProgress] = useState(0)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const animationRef = useRef<number>()
@@ -65,7 +67,7 @@ export function WipeAnimation({
       {/* 原图（底层） */}
       <img
         src={originalImage}
-        alt="原图"
+        alt={t('upload.editor.originalImageAlt')}
         className="w-full h-full object-contain"
         onLoad={() => {
           // 当原图加载完成时，检查处理后图片是否也加载完成
@@ -85,7 +87,7 @@ export function WipeAnimation({
       >
         <img
           src={processedImage}
-          alt="处理后图片"
+          alt={t('upload.editor.processedImageAlt')}
           className="w-full h-full object-contain"
         />
       </div>

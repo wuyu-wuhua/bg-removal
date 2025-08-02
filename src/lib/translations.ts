@@ -354,6 +354,83 @@ export interface Translations {
         removeBackground: string
         reprocess: string
         downloadResult: string
+        reupload: string
+        placeBackground: string
+        downloadComposedImage: string
+        composingImage: string
+        preparingComposition: string
+        searchBackground: string
+        applyBackground: string
+        backgroundSelected: string
+        selectBackground: string
+        backgroundSearchFailed: string
+        // 背景选择器相关翻译
+        loadMore: string
+        loading: string
+        noResultsFound: string
+        loadingBackgrounds: string
+        searchFailed: string
+        loadBackgroundsFailed: string
+        // 新增的翻译键
+        changeBackground: string
+        regenerate: string
+        resetToTransparent: string
+        noImageToDownload: string
+        preparingRegenerate: string
+        regenerateSuccess: string
+        regenerateFailed: string
+        regenerateRetry: string
+        downloadFailedRightClick: string
+        resetToTransparentSuccess: string
+        imageOpenedInNewWindow: string
+        exampleProcessFailed: string
+        exampleLoadFailed: string
+        // 新增的翻译
+        originalImageAlt: string
+        processedImageAlt: string
+        uploadFailed: string
+        processingError: string
+        downloadFailed: string
+        exampleImageAlt: string
+        examplePlaceholder: string
+        compressionInfo: string
+        compressionSuccess: string
+        compressionLog: string
+        imageLoadError: string
+        exampleLoadError: string
+        exampleLoadSuccess: string
+        exampleProcessError: string
+        userNotLoggedIn: string
+        userIdEmpty: string
+        userIdError: string
+        resetState: string
+        uploadToStorage: string
+        uploadSuccess: string
+        uploadError: string
+        setServerUrl: string
+        exampleProcessComplete: string
+        startBackgroundRemoval: string
+        serverUrlEmpty: string
+        serverUrlWait: string
+        startProcessing: string
+        newImageUpload: string
+        currentState: string
+        dragUploadSuccess: string
+        pasteUploadSuccess: string
+        resetUploadState: string
+        loadExampleImage: string
+        exampleImageSuccess: string
+        imageCompressionComplete: string
+        setLocalImageUrl: string
+        safeFileName: string
+        fullPath: string
+        setUploadedState: string
+        startDownload: string
+        downloadSuccess: string
+        downloadComplete: string
+        tryDirectDownload: string
+        directDownloadTriggered: string
+        directDownloadFailed: string
       }
     footer: {
       termsAgreement: string
@@ -1271,9 +1348,9 @@ export const translations: Record<Language, Translations> = {
         },
         {
           id: 5,
-          title: '宠物照片处理',
-          description: '可爱宠物的专业级背景移除',
-          category: '宠物处理',
+          title: '水果照片处理',
+          description: '新鲜水果的专业级背景移除',
+          category: '水果处理',
           rating: 4.8,
           views: '2.1k'
         },
@@ -1425,7 +1502,7 @@ export const translations: Record<Language, Translations> = {
         exampleTitle: '示例',
         exampleLabel: '示例',
         clickToUse: '点击使用',
-        exampleImages: ['人物照片', '动物照片', '物品照片', '建筑照片']
+        exampleImages: ['人物照片', '水果照片', '物品照片', '建筑照片']
       },
       editor: {
         createAIScene: '创建AI场景',
@@ -1454,7 +1531,84 @@ export const translations: Record<Language, Translations> = {
         uploadAndProcess: '上传图片后自动开始处理',
         removeBackground: '移除背景',
         reprocess: '重新处理',
-        downloadResult: '下载结果'
+        downloadResult: '下载结果',
+        reupload: '重新上传',
+        placeBackground: '更换背景',
+        downloadComposedImage: '下载合成图片',
+        composingImage: '正在合成图片...',
+        preparingComposition: '准备合成图片...',
+        searchBackground: '搜索背景...',
+        applyBackground: '应用背景',
+        backgroundSelected: '已选择背景图片',
+        selectBackground: '请选择一个背景图片',
+        backgroundSearchFailed: '搜索背景图片失败',
+        // 新增的翻译
+        originalImageAlt: '原图',
+        processedImageAlt: '处理后图片',
+        uploadFailed: '图片上传失败，请重试',
+        processingError: '处理失败',
+        downloadFailed: '下载失败，请右键点击图片选择"另存为"',
+        exampleImageAlt: '示例图片',
+        examplePlaceholder: '示例',
+        compressionInfo: '压缩图片',
+        compressionSuccess: '图片尺寸符合要求',
+        compressionLog: '压缩图片',
+        imageLoadError: '图片加载失败，使用原文件',
+        exampleLoadError: '加载示例图片失败',
+        exampleLoadSuccess: '示例图片加载成功',
+        exampleProcessError: '处理示例图片失败',
+        userNotLoggedIn: '用户未登录，重定向到登录页面',
+        userIdEmpty: '用户ID为空',
+        userIdError: '用户ID获取失败，请重新登录',
+        resetState: '重置状态，准备上传新图片',
+        uploadToStorage: '开始上传到Supabase',
+        uploadSuccess: '上传成功',
+        uploadError: '上传示例图片失败',
+        setServerUrl: '设置服务器图片URL',
+        exampleProcessComplete: '示例图片处理完成，开始背景移除',
+        startBackgroundRemoval: '开始背景移除处理',
+        serverUrlEmpty: 'serverImageUrl为空，等待图片上传完成...',
+        serverUrlWait: '等待serverImageUrl更新...',
+        startProcessing: '开始处理新上传的图片',
+        newImageUpload: '新图片上传成功，服务器URL',
+        currentState: '当前状态',
+        dragUploadSuccess: '拖拽上传成功，服务器URL',
+        pasteUploadSuccess: '粘贴上传成功，服务器URL',
+        resetUploadState: '重置上传状态',
+        loadExampleImage: '加载示例图片',
+        exampleImageSuccess: '示例图片加载成功',
+        imageCompressionComplete: '图片压缩完成',
+        setLocalImageUrl: '设置本地图片URL',
+        safeFileName: '开始上传到Supabase',
+        fullPath: '完整路径',
+        setUploadedState: '设置上传状态为true',
+        startDownload: '开始下载图片',
+        downloadSuccess: '图片下载成功，大小',
+        downloadComplete: '下载完成',
+        tryDirectDownload: '尝试直接下载链接',
+        directDownloadTriggered: '直接下载链接已触发',
+        directDownloadFailed: '直接下载也失败',
+        // 背景选择器相关翻译
+        loadMore: '加载更多',
+        loading: '加载中...',
+        noResultsFound: '没有找到相关背景图片',
+        loadingBackgrounds: '正在加载背景图片...',
+        searchFailed: '搜索失败，请重试',
+        loadBackgroundsFailed: '加载背景图片失败，请重试',
+        // 新增的翻译
+        changeBackground: '更换背景',
+        regenerate: '重新生成',
+        resetToTransparent: '返回透明',
+        noImageToDownload: '没有可下载的图片',
+        preparingRegenerate: '正在准备重新生成，请稍等...',
+        regenerateSuccess: '重新生成成功！',
+        regenerateFailed: '重新生成失败，请重试',
+        regenerateRetry: '重新生成失败，请重试',
+        downloadFailedRightClick: '下载失败，请右键点击图片选择"另存为"',
+        resetToTransparentSuccess: '已回到透明背景状态',
+        imageOpenedInNewWindow: '图片已在新窗口打开，请右键保存',
+        exampleProcessFailed: '处理示例图片失败',
+        exampleLoadFailed: '加载示例图片失败，请重试'
       },
       footer: {
         termsAgreement: '上传图片或网址，即代表您同意我们的',
@@ -2610,9 +2764,9 @@ export const translations: Record<Language, Translations> = {
         },
         {
           id: 2,
-          title: 'Animal Image Processing',
-          description: 'Accurately identifies animal contours, maintaining natural effects',
-          category: 'Animal Processing',
+          title: 'Fruit Image Processing',
+          description: 'Accurately identifies fruit contours, maintaining natural effects',
+          category: 'Fruit Processing',
           rating: 4.8,
           views: '1.8k'
         },
@@ -2634,9 +2788,9 @@ export const translations: Record<Language, Translations> = {
         },
         {
           id: 5,
-          title: 'Pet Photo Processing',
-          description: 'Professional-grade background removal for pets',
-          category: 'Pet Processing',
+          title: 'Fruit Photo Processing',
+          description: 'Professional-grade background removal for fruits',
+          category: 'Fruit Processing',
           rating: 4.8,
           views: '2.1k'
         },
@@ -2788,7 +2942,7 @@ export const translations: Record<Language, Translations> = {
         exampleTitle: 'Example',
         exampleLabel: 'Example',
         clickToUse: 'Click to use',
-        exampleImages: ['Portrait Photo', 'Animal Photo', 'Object Photo', 'Architecture Photo']
+        exampleImages: ['Portrait Photo', 'Fruit Photo', 'Object Photo', 'Architecture Photo']
       },
       editor: {
         createAIScene: 'Create AI Scene',
@@ -2817,7 +2971,84 @@ export const translations: Record<Language, Translations> = {
         uploadAndProcess: 'Automatically start processing after uploading image',
         removeBackground: 'Remove Background',
         reprocess: 'Reprocess',
-        downloadResult: 'Download Result'
+        downloadResult: 'Download Result',
+        reupload: 'Reupload',
+        placeBackground: 'Change Background',
+        downloadComposedImage: 'Download Composed Image',
+        composingImage: 'Composing Image...',
+        preparingComposition: 'Preparing Composition...',
+        searchBackground: 'Search Background...',
+        applyBackground: 'Apply Background',
+        backgroundSelected: 'Background Selected',
+        selectBackground: 'Please Select a Background Image',
+        backgroundSearchFailed: 'Background Search Failed',
+        // 新增的翻译
+        originalImageAlt: 'Original Image',
+        processedImageAlt: 'Processed Image',
+        uploadFailed: 'Image upload failed, please try again',
+        processingError: 'Processing failed',
+        downloadFailed: 'Download failed, please right-click the image and select "Save As"',
+        exampleImageAlt: 'Example Image',
+        examplePlaceholder: 'Example',
+        compressionInfo: 'Compress Image',
+        compressionSuccess: 'Image size meets requirements',
+        compressionLog: 'Compress Image',
+        imageLoadError: 'Image loading failed, using original file',
+        exampleLoadError: 'Failed to load example image',
+        exampleLoadSuccess: 'Example image loaded successfully',
+        exampleProcessError: 'Failed to process example image',
+        userNotLoggedIn: 'User not logged in, redirecting to login page',
+        userIdEmpty: 'User ID is empty',
+        userIdError: 'Failed to get user ID, please log in again',
+        resetState: 'Reset state, preparing to upload new image',
+        uploadToStorage: 'Start uploading to Supabase',
+        uploadSuccess: 'Upload successful',
+        uploadError: 'Failed to upload example image',
+        setServerUrl: 'Set server image URL',
+        exampleProcessComplete: 'Example image processing complete, starting background removal',
+        startBackgroundRemoval: 'Start background removal processing',
+        serverUrlEmpty: 'serverImageUrl is empty, waiting for image upload to complete...',
+        serverUrlWait: 'Waiting for serverImageUrl to update...',
+        startProcessing: 'Start processing newly uploaded image',
+        newImageUpload: 'New image upload successful, server URL',
+        currentState: 'Current state',
+        dragUploadSuccess: 'Drag upload successful, server URL',
+        pasteUploadSuccess: 'Paste upload successful, server URL',
+        resetUploadState: 'Reset upload state',
+        loadExampleImage: 'Load example image',
+        exampleImageSuccess: 'Example image loaded successfully',
+        imageCompressionComplete: 'Image compression complete',
+        setLocalImageUrl: 'Set local image URL',
+        safeFileName: 'Start uploading to Supabase',
+        fullPath: 'Full path',
+        setUploadedState: 'Set uploaded state to true',
+        startDownload: 'Start downloading image',
+        downloadSuccess: 'Image download successful, size',
+        downloadComplete: 'Download complete',
+        tryDirectDownload: 'Try direct download link',
+        directDownloadTriggered: 'Direct download link triggered',
+        directDownloadFailed: 'Direct download also failed',
+        // 背景选择器相关翻译
+        loadMore: 'Load More',
+        loading: 'Loading...',
+        noResultsFound: 'No background images found',
+        loadingBackgrounds: 'Loading background images...',
+        searchFailed: 'Search failed, please try again',
+        loadBackgroundsFailed: 'Failed to load background images, please try again',
+        // 新增的翻译
+        changeBackground: 'Change Background',
+        regenerate: 'Regenerate',
+        resetToTransparent: 'Reset to Transparent',
+        noImageToDownload: 'No image to download',
+        preparingRegenerate: 'Preparing to regenerate, please wait...',
+        regenerateSuccess: 'Regeneration successful!',
+        regenerateFailed: 'Regeneration failed, please try again',
+        regenerateRetry: 'Regeneration failed, please try again',
+        downloadFailedRightClick: 'Download failed, please right-click the image and select "Save As"',
+        resetToTransparentSuccess: 'Returned to transparent background state',
+        imageOpenedInNewWindow: 'Image opened in new window, please right-click to save',
+        exampleProcessFailed: 'Failed to process example image',
+        exampleLoadFailed: 'Failed to load example image, please try again'
       },
       footer: {
         termsAgreement: 'By uploading an image or URL, you agree to our',

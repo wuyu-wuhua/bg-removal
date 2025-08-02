@@ -40,7 +40,7 @@ export default function TransparentLogo({ size = 'md', showText = true, classNam
         />
       ) : (
         <div className={`${sizeClasses[size]} bg-blue-500 rounded-lg flex items-center justify-center`}>
-          <span className="text-white font-bold text-sm">抠</span>
+          <span className="text-white font-bold text-sm">AI</span>
         </div>
       )}
       
