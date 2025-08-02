@@ -1289,7 +1289,7 @@ export const translations: Record<Language, Translations> = {
         questions: [
           {
             question: '积分如何使用?',
-            answer: '每次使用AI功能处理图片时会消耗相应积分。不同功能消耗的积分数量不同，图像上色通常消耗4-6积分，图像超分消耗3-5积分。'
+            answer: '每次使用AI功能处理图片时会消耗相应积分。背景消除功能每次消耗1积分，简单高效。'
           },
           {
             question: '积分有有效期吗?',
@@ -1301,7 +1301,7 @@ export const translations: Record<Language, Translations> = {
           },
           {
             question: '如何获得免费积分?',
-            answer: '我们提供每日登录奖励系统，用户每天登录可自动获得5个积分。登录后会在消息中心收到奖励通知。这是我们奖励用户并鼓励持续使用我们服务的方式。您也可以点击右上角的礼物图标手动领取奖励。'
+            answer: '用户首次登录时自动赠送10积分，用于体验我们的背景消除服务。积分用完后需要购买积分继续使用。'
           }
         ]
       }
@@ -2779,7 +2779,7 @@ export const translations: Record<Language, Translations> = {
         questions: [
           {
             question: 'How are credits used?',
-            answer: 'Each time you use AI features to process images, corresponding credits are consumed. Different features consume different amounts of credits, image coloring typically consumes 4-6 credits, image super-resolution consumes 3-5 credits. We ensure transparent credit usage with detailed consumption records.'
+            answer: 'Each time you use AI features to process images, corresponding credits are consumed. Background removal consumes 1 credit per image, simple and efficient.'
           },
           {
             question: 'Do credits have an expiration date?',
@@ -2791,7 +2791,7 @@ export const translations: Record<Language, Translations> = {
           },
           {
             question: 'How to get free credits?',
-            answer: 'We provide a daily login reward system where users automatically receive 5 credits each day they log in. You will receive reward notifications in the message center after logging in. This is our way of rewarding users and encouraging continued use of our services. You can also manually claim rewards by clicking the gift icon in the top right corner. We value user loyalty and provide generous rewards.'
+            answer: 'New users automatically receive 10 free credits upon first login to experience our background removal service. After using up the credits, you need to purchase more credits to continue using the service.'
           },
           {
             question: 'What makes our pricing competitive?',
