@@ -975,7 +975,7 @@ export const translations: Record<Language, Translations> = {
         ctaPrimary: '免费开始使用',
         ctaSecondary: '查看案例',
         badge: 'Remover Fundo AI驱动的图像处理平台',
-        mainTitle: 'Remover Fundo背景移除',
+        mainTitle: '背景移除',
         subTitle: '精准抠图，智能处理',
         features: {
           title: 'Remover Fundo功能特色',
@@ -1118,70 +1118,70 @@ export const translations: Record<Language, Translations> = {
             username: '@misaki',
             location: 'JP Japan',
             role: 'Graphic Designer',
-            body: '终于找到了完美的抠图工具！就连发丝也处理得如此精细，这绝对是太棒了。'
+            body: 'Remover Fundo终于找到了完美的抠图工具！就连发丝也处理得如此精细，Remover Fundo这绝对是太棒了。'
           },
           {
             name: 'Max Weber',
             username: '@maxw',
             location: 'DE Germany',
             role: 'Product Manager',
-            body: 'AI技术真正改变了我的工作流程。创建产品图片现在变得如此简单高效。'
+            body: 'Remover Fundo的AI技术真正改变了我的工作流程。创建产品图片现在变得如此简单高效，感谢Remover Fundo。'
           },
           {
             name: 'Sophie Martin',
             username: '@sophie',
             location: 'FR France',
             role: 'Creative Director',
-            body: '对其处理复杂背景的能力印象深刻，即使是透明玻璃和反光材料也能完美处理。'
+            body: '对Remover Fundo处理复杂背景的能力印象深刻，即使是透明玻璃和反光材料Remover Fundo也能完美处理。'
           },
           {
             name: 'Ryan Thompson',
             username: '@ryant',
             location: 'CA Canada',
             role: 'Social Media Manager',
-            body: '移动端体验也很棒，我可以随时随地处理图片。真正的生产力工具！'
+            body: 'Remover Fundo移动端体验也很棒，我可以随时随地处理图片。Remover Fundo真正的生产力工具！'
           },
           {
             name: 'Isabella Brown',
             username: '@bella',
             location: 'AU Australia',
             role: 'E-commerce Manager',
-            body: '批量处理太有用了！一次处理100张图片的同时保持一致的品质。'
+            body: 'Remover Fundo批量处理太有用了！一次处理100张图片的同时保持一致的品质，Remover Fundo太棒了。'
           },
           {
             name: 'Arjun Patel',
             username: '@arjun',
             location: 'IN India',
             role: 'Digital Marketing Expert',
-            body: '从试用用户到付费用户，CutoutMaster不断改进。期待更多AI功能！'
+            body: '从试用用户到付费用户，Remover Fundo不断改进。期待更多Remover Fundo AI功能！'
           },
           {
             name: 'Emma Wilson',
             username: '@emma',
             location: 'GB United Kingdom',
             role: 'Freelancer',
-            body: '免费版本已经很强大，付费功能更是令人惊喜。物超所值！'
+            body: 'Remover Fundo免费版本已经很强大，付费功能更是令人惊喜。Remover Fundo物超所值！'
           },
           {
             name: 'Jihoon Park',
             username: '@jihoon',
             location: 'KR South Korea',
             role: 'Content Creator',
-            body: '界面简洁易用，初学者可以快速上手。客户支持响应很快。'
+            body: 'Remover Fundo界面简洁易用，初学者可以快速上手。Remover Fundo客户支持响应很快。'
           },
           {
             name: 'Ana Silva',
             username: '@anas',
             location: 'BR Brazil',
             role: 'Blogger',
-            body: '增强功能将我的图片质量提升到了新水平，细节更加生动清晰。'
+            body: 'Remover Fundo增强功能将我的图片质量提升到了新水平，细节更加生动清晰，感谢Remover Fundo。'
           },
           {
             name: 'Carlos Rodriguez',
             username: '@carlos',
             location: 'ES Spain',
             role: 'Enterprise User',
-            body: '安全措施很棒，图片处理完成后会自动删除。完全不用担心隐私问题。'
+            body: 'Remover Fundo安全措施很棒，图片处理完成后会自动删除。完全不用担心隐私问题，Remover Fundo值得信赖。'
           }
         ]
       },
@@ -1195,31 +1195,31 @@ export const translations: Record<Language, Translations> = {
             answer: 'Remover Fundo支持JPG、PNG、WebP、BMP等主流图片格式，最大文件大小为10MB。'
           },
           {
-            question: '处理一张图片需要多长时间？',
-            answer: '通常情况下，处理一张图片只需要2-5秒，具体时间取决于图片大小和复杂度。'
+            question: 'Remover Fundo处理一张图片需要多长时间？',
+            answer: '通常情况下，Remover Fundo处理一张图片只需要2-5秒，具体时间取决于图片大小和复杂度。'
           },
           {
             question: 'Remover Fundo免费用户有什么限制？',
             answer: 'Remover Fundo免费用户每天可以处理10张图片，升级到付费计划可以享受无限制处理。'
           },
           {
-            question: '如何保证图片的隐私安全？',
-            answer: '我们采用端到端加密技术，处理完成后会自动删除您的图片，绝不保存或分享。'
+            question: 'Remover Fundo如何保证图片的隐私安全？',
+            answer: 'Remover Fundo采用端到端加密技术，处理完成后会自动删除您的图片，绝不保存或分享。'
           },
           {
             question: 'Remover Fundo可以批量处理图片吗？',
             answer: '是的，Remover Fundo付费用户可以同时上传并处理多张图片，大大提升工作效率。'
           },
           {
-            question: '如何注册账户？',
-            answer: '点击右上角的注册按钮，使用邮箱或第三方账户即可快速注册。'
+            question: '如何注册Remover Fundo账户？',
+            answer: '点击右上角的注册按钮，使用邮箱或第三方账户即可快速注册Remover Fundo账户。'
           }
         ]
       }
     },
     pricing: {
-      title: '选择您的积分套餐',
-      subtitle: '为您的图像处理需求选择完美的方案',
+      title: '选择您的Remover Fundo积分套餐',
+      subtitle: '为您的Remover Fundo图像处理需求选择完美的方案',
       plans: {
         basic: {
           name: '基础版',
@@ -1269,28 +1269,28 @@ export const translations: Record<Language, Translations> = {
         }
       },
       howToUse: {
-        title: '如何使用积分',
-        creditRate: '1积分 = 处理1张图片',
+        title: '如何使用Remover Fundo积分',
+        creditRate: '1积分 = Remover Fundo处理1张图片',
         steps: [
-          '上传图片并选择处理类型',
-          '处理完成后自动扣除积分',
-          '在仪表板中查看积分余额'
+          '上传图片并选择Remover Fundo处理类型',
+          'Remover Fundo处理完成后自动扣除积分',
+          '在Remover Fundo仪表板中查看积分余额'
         ]
       },
       faq: {
         title: '常见问题',
         questions: [
           {
-            question: '积分如何使用?',
-            answer: '每次使用AI功能处理图片时会消耗相应积分。不同功能消耗的积分数量不同，图像上色通常消耗4-6积分，图像超分消耗3-5积分。'
+            question: 'Remover Fundo积分如何使用?',
+            answer: '每次使用Remover Fundo AI功能处理图片时会消耗相应积分。不同功能消耗的积分数量不同，图像上色通常消耗4-6积分，图像超分消耗3-5积分。'
           },
           {
-            question: '积分有有效期吗?',
-            answer: '是的，积分自购买之日起12个月内有效。我们建议您根据实际使用频率选择合适的套餐。'
+            question: 'Remover Fundo积分有有效期吗?',
+            answer: '是的，Remover Fundo积分自购买之日起12个月内有效。我们建议您根据实际使用频率选择合适的Remover Fundo套餐。'
           },
           {
-            question: '支持哪些支付方式?',
-            answer: '我们支持信用卡、借记卡等多种支付方式，所有支付都通过Stripe安全处理，确保您的支付信息安全。'
+            question: 'Remover Fundo支持哪些支付方式?',
+            answer: 'Remover Fundo支持信用卡、借记卡等多种支付方式，所有支付都通过Stripe安全处理，确保您的支付信息安全。'
           },
           {
             question: '如何获得免费积分?',
@@ -1317,49 +1317,49 @@ export const translations: Record<Language, Translations> = {
       cases: [
         {
           id: 1,
-          title: '人像背景移除',
-          description: '完美处理复杂人像，包括发丝细节',
-          category: '人像处理',
+          title: 'Remover Fundo人像背景移除',
+          description: 'Remover Fundo完美处理复杂人像，包括发丝细节',
+          category: 'Remover Fundo人像处理',
           rating: 4.9,
           views: '2.3k'
         },
         {
           id: 2,
-          title: '动物图像处理',
-          description: '精确识别动物轮廓，保持自然效果',
-          category: '动物处理',
+          title: 'Remover Fundo动物图像处理',
+          description: 'Remover Fundo精确识别动物轮廓，保持自然效果',
+          category: 'Remover Fundo动物处理',
           rating: 4.8,
           views: '1.8k'
         },
         {
           id: 3,
-          title: '产品展示优化',
-          description: '专业级产品图片背景移除',
-          category: '产品处理',
+          title: 'Remover Fundo产品展示优化',
+          description: 'Remover Fundo专业级产品图片背景移除',
+          category: 'Remover Fundo产品处理',
           rating: 4.9,
           views: '3.1k'
         },
         {
           id: 4,
-          title: '汽车背景移除',
-          description: '复杂背景下的车辆精确提取',
-          category: '车辆处理',
+          title: 'Remover Fundo汽车背景移除',
+          description: 'Remover Fundo复杂背景下的车辆精确提取',
+          category: 'Remover Fundo车辆处理',
           rating: 4.7,
           views: '1.5k'
         },
         {
           id: 5,
-          title: '水果照片处理',
-          description: '新鲜水果的专业级背景移除',
-          category: '水果处理',
+          title: 'Remover Fundo水果照片处理',
+          description: 'Remover Fundo新鲜水果的专业级背景移除',
+          category: 'Remover Fundo水果处理',
           rating: 4.8,
           views: '2.1k'
         },
         {
           id: 6,
-          title: '建筑摄影优化',
-          description: '建筑摄影的专业背景处理',
-          category: '建筑处理',
+          title: 'Remover Fundo建筑摄影优化',
+          description: 'Remover Fundo建筑摄影的专业背景处理',
+          category: 'Remover Fundo建筑处理',
           rating: 4.6,
           views: '1.2k'
         }
@@ -1490,11 +1490,11 @@ export const translations: Record<Language, Translations> = {
     },
     upload: {
       title: '使用Remover Fundo上传一张图片以消除背景',
-      subtitle: '上传您的图片到Remover Fundo',
+      subtitle: '上传您的图片到Remover Fundo进行Remover Fundo背景移除',
       backToHome: '返回首页',
       uploadArea: {
-        title: '上传图片',
-        subtitle: '或者拖放一个文件',
+        title: 'Remover Fundo上传图片',
+        subtitle: 'Remover Fundo或者拖放一个文件',
         dragDrop: '或者拖放一个文件',
         or: '或者',
         paste: '粘贴图片或',
@@ -1525,17 +1525,17 @@ export const translations: Record<Language, Translations> = {
         thumbnail: '缩略图',
         originalImage: '原图',
         processedImage: '处理后',
-        processing: '处理中...',
-        processingComplete: '处理完成',
-        processingFailed: '处理失败',
+        processing: 'Remover Fundo处理中...',
+        processingComplete: 'Remover Fundo处理完成',
+        processingFailed: 'Remover Fundo处理失败',
         showEffect: '展示效果中...',
         uploadAndProcess: '上传图片后自动开始处理',
-        removeBackground: '移除背景',
+        removeBackground: 'Remover Fundo移除背景',
         reprocess: '重新处理',
-        downloadResult: '下载结果',
+        downloadResult: 'Remover Fundo下载结果',
         reupload: '重新上传',
         placeBackground: '更换背景',
-        downloadComposedImage: '下载合成图片',
+        downloadComposedImage: 'Remover Fundo下载合成图片',
         composingImage: '正在合成图片...',
         preparingComposition: '准备合成图片...',
         searchBackground: '搜索背景...',
@@ -1563,29 +1563,29 @@ export const translations: Record<Language, Translations> = {
         userIdError: '用户ID获取失败，请重新登录',
         resetState: '重置状态，准备上传新图片',
         uploadToStorage: '开始上传到Supabase',
-        uploadSuccess: '上传成功',
+        uploadSuccess: 'Remover Fundo上传成功',
         uploadError: '上传示例图片失败',
         setServerUrl: '设置服务器图片URL',
-        exampleProcessComplete: '示例图片处理完成，开始背景移除',
-        startBackgroundRemoval: '开始背景移除处理',
+        exampleProcessComplete: 'Remover Fundo示例图片处理完成，开始背景移除',
+        startBackgroundRemoval: 'Remover Fundo开始背景移除处理',
         serverUrlEmpty: 'serverImageUrl为空，等待图片上传完成...',
         serverUrlWait: '等待serverImageUrl更新...',
-        startProcessing: '开始处理新上传的图片',
+        startProcessing: 'Remover Fundo开始处理新上传的图片',
         newImageUpload: '新图片上传成功，服务器URL',
         currentState: '当前状态',
-        dragUploadSuccess: '拖拽上传成功，服务器URL',
-        pasteUploadSuccess: '粘贴上传成功，服务器URL',
+        dragUploadSuccess: 'Remover Fundo拖拽上传成功，服务器URL',
+        pasteUploadSuccess: 'Remover Fundo粘贴上传成功，服务器URL',
         resetUploadState: '重置上传状态',
         loadExampleImage: '加载示例图片',
-        exampleImageSuccess: '示例图片加载成功',
+        exampleImageSuccess: 'Remover Fundo示例图片加载成功',
         imageCompressionComplete: '图片压缩完成',
         setLocalImageUrl: '设置本地图片URL',
         safeFileName: '开始上传到Supabase',
         fullPath: '完整路径',
         setUploadedState: '设置上传状态为true',
         startDownload: '开始下载图片',
-        downloadSuccess: '图片下载成功，大小',
-        downloadComplete: '下载完成',
+        downloadSuccess: 'Remover Fundo图片下载成功，大小',
+        downloadComplete: 'Remover Fundo下载完成',
         tryDirectDownload: '尝试直接下载链接',
         directDownloadTriggered: '直接下载链接已触发',
         directDownloadFailed: '直接下载也失败',
@@ -1623,9 +1623,9 @@ export const translations: Record<Language, Translations> = {
       title: 'Remover Fundo帮助中心',
       subtitle: '找到您需要的Remover Fundo帮助',
       search: '搜索Remover Fundo帮助',
-      backToHome: '返回首页',
+      backToHome: '返回Remover Fundo首页',
       badge: 'Remover Fundo帮助中心',
-      description: '找到您需要的所有Remover Fundo帮助信息，快速解决使用过程中的问题',
+      description: '找到您需要的所有Remover Fundo帮助信息，快速解决Remover Fundo使用过程中的问题',
       searchPlaceholder: '搜索帮助内容...',
       views: '次浏览',
       categories: {
@@ -2354,7 +2354,7 @@ export const translations: Record<Language, Translations> = {
       }
     },
     footer: {
-      description: 'Remover Fundo是专业的AI图像处理平台，为您提供精准的背景移除、物体分割和图像增强服务。',
+      description: 'Remover Fundo是专业的AI图像处理平台，为您提供精准的Remover Fundo背景移除、Remover Fundo物体分割和Remover Fundo图像增强服务。',
       quickLinks: '快速链接',
       support: '支持',
       aboutUs: '关于我们',
@@ -2552,77 +2552,77 @@ export const translations: Record<Language, Translations> = {
             username: '@davidc',
             location: 'US United States',
             role: 'Professional Photographer',
-            body: 'As a photographer, I process hundreds of photos daily. CutoutMaster\'s batch processing saves me 80% of my time!'
+            body: 'As a photographer, I process hundreds of photos daily. Remover Fundo\'s batch processing saves me 80% of my time! Remover Fundo is truly a game-changer for professional photographers.'
           },
           {
             name: 'Misaki Tanaka',
             username: '@misaki',
             location: 'JP Japan',
             role: 'Graphic Designer',
-            body: 'Finally found the perfect cutout tool! Even hair strands are processed so finely, this is absolutely amazing.'
+            body: 'Finally found the perfect cutout tool! Remover Fundo processes even hair strands so finely, this is absolutely amazing. Remover Fundo\'s precision is unmatched.'
           },
           {
             name: 'Max Weber',
             username: '@maxw',
             location: 'DE Germany',
             role: 'Product Manager',
-            body: 'AI technology has truly changed my workflow. Creating product images is now so simple and efficient.'
+            body: 'Remover Fundo\'s AI technology has truly changed my workflow. Creating product images is now so simple and efficient with Remover Fundo.'
           },
           {
             name: 'Sophie Martin',
             username: '@sophie',
             location: 'FR France',
             role: 'Creative Director',
-            body: 'Impressed by its ability to handle complex backgrounds, even transparent glass and reflective materials are processed perfectly.'
+            body: 'Impressed by Remover Fundo\'s ability to handle complex backgrounds, even transparent glass and reflective materials are processed perfectly by Remover Fundo.'
           },
           {
             name: 'Ryan Thompson',
             username: '@ryant',
             location: 'CA Canada',
             role: 'Social Media Manager',
-            body: 'Mobile experience is great too, I can process images anytime, anywhere. A true productivity tool!'
+            body: 'Remover Fundo\'s mobile experience is great too, I can process images anytime, anywhere. Remover Fundo is a true productivity tool!'
           },
           {
             name: 'Isabella Brown',
             username: '@bella',
             location: 'AU Australia',
             role: 'E-commerce Manager',
-            body: 'Batch processing is so useful! Processing 100 images at once while maintaining consistent quality.'
+            body: 'Remover Fundo\'s batch processing is so useful! Processing 100 images at once while maintaining consistent quality with Remover Fundo.'
           },
           {
             name: 'Arjun Patel',
             username: '@arjun',
             location: 'IN India',
             role: 'Digital Marketing Expert',
-            body: 'From trial to paid user, CutoutMaster keeps improving. Looking forward to more AI features!'
+            body: 'From trial to paid user, Remover Fundo keeps improving. Looking forward to more AI features from Remover Fundo!'
           },
           {
             name: 'Emma Wilson',
             username: '@emma',
             location: 'GB United Kingdom',
             role: 'Freelancer',
-            body: 'The free version is already powerful, and the paid features are even more surprising. Great value for money!'
+            body: 'Remover Fundo\'s free version is already powerful, and the paid features are even more surprising. Remover Fundo offers great value for money!'
           },
           {
             name: 'Jihoon Park',
             username: '@jihoon',
             location: 'KR South Korea',
             role: 'Content Creator',
-            body: 'Clean and easy-to-use interface, beginners can get started quickly. Customer support is very responsive.'
+            body: 'Remover Fundo has a clean and easy-to-use interface, beginners can get started quickly. Remover Fundo\'s customer support is very responsive.'
           },
           {
             name: 'Ana Silva',
             username: '@anas',
             location: 'BR Brazil',
             role: 'Blogger',
-            body: 'The enhancement feature elevated my image quality to the next level, more vibrant and clearer details.'
+            body: 'Remover Fundo\'s enhancement feature elevated my image quality to the next level, more vibrant and clearer details with Remover Fundo.'
           },
           {
             name: 'Carlos Rodriguez',
             username: '@carlos',
             location: 'ES Spain',
             role: 'Enterprise User',
-            body: 'Great security measures, images are automatically deleted after processing. No privacy concerns at all.'
+            body: 'Remover Fundo has great security measures, images are automatically deleted after processing. No privacy concerns at all with Remover Fundo.'
           },
           {
             name: 'Sarah Johnson',
