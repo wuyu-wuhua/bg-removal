@@ -100,6 +100,46 @@ export default function RootLayout({
           }}
         />
         
+        {/* Clarity 兼容性优化 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // 确保Clarity能正确捕获动态内容
+              if (typeof window !== 'undefined') {
+                // 延迟加载优化，确保页面完全渲染后再允许Clarity录制
+                window.addEventListener('load', function() {
+                  setTimeout(function() {
+                    // 强制重绘页面元素，确保Clarity能正确捕获
+                    document.body.style.visibility = 'visible';
+                    if (document.body.style.visibility === 'hidden') {
+                      document.body.style.visibility = 'visible';
+                    }
+                  }, 1000);
+                });
+                
+                // 为动态内容添加标记，帮助Clarity识别
+                const observer = new MutationObserver(function(mutations) {
+                  mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                      mutation.addedNodes.forEach(function(node) {
+                        if (node.nodeType === 1) { // Element node
+                          node.setAttribute('data-clarity-visible', 'true');
+                        }
+                      });
+                    }
+                  });
+                });
+                
+                // 开始观察DOM变化
+                observer.observe(document.body, {
+                  childList: true,
+                  subtree: true
+                });
+              }
+            `,
+          }}
+        />
+        
         {/* Microsoft Clarity */}
         <script
           dangerouslySetInnerHTML={{

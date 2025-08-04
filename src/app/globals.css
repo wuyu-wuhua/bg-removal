@@ -604,3 +604,37 @@
   animation: accordion-up 300ms cubic-bezier(0.87, 0, 0.13, 1);
   overflow: hidden;
 }
+
+/* 确保Clarity录屏兼容性 */
+@media screen {
+  /* 强制显示所有重要元素 */
+  body, html {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* 确保图片和canvas元素在录屏中可见 */
+  img, canvas, video {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+  
+  /* 确保按钮和交互元素可见 */
+  button, a, [role="button"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* 防止CSS动画影响录屏 */
+  * {
+    animation-play-state: running !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* 为Clarity添加特殊标记的元素 */
+[data-clarity-visible="true"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
