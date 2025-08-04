@@ -79,12 +79,7 @@ export default function PrivacyPage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <div className="flex items-center justify-start mb-8">
-              <Link href="/" className="group flex items-center text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-all duration-300 hover:scale-105">
-                <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {t('policies.privacy.backToHome')}
-              </Link>
-            </div>
+
             
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-full text-sm font-medium mb-8 shadow-lg">
@@ -92,15 +87,15 @@ export default function PrivacyPage() {
                 {t('policies.privacy.badge')}
               </div>
               
-              <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-green-800 to-emerald-800 dark:from-white dark:via-green-200 dark:to-emerald-200 bg-clip-text text-transparent">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-gray-900 via-green-800 to-emerald-800 dark:from-white dark:via-green-200 dark:to-emerald-200 bg-clip-text text-transparent">
                 {t('policies.privacy.title')}
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 sm:mb-12">
                 {t('policies.privacy.description')}
               </p>
               
-              <div className="flex flex-wrap justify-center gap-6">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
                 <div className="flex items-center bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
                   <Lock className="h-5 w-5 text-green-600 mr-2" />
                   <span className="text-gray-700 dark:text-gray-300">{t('policies.privacy.heroStats.dataEncryption')}</span>

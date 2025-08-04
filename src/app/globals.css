@@ -71,6 +71,25 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    /* 增加触摸目标的最小尺寸 */
+    button, a, [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* 优化移动端滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* 防止移动端缩放 */
+    input, textarea, select {
+      font-size: 16px;
+    }
+  }
 }
 
 /* Custom scrollbar */

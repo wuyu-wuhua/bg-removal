@@ -71,7 +71,7 @@ export function ImageResult({
           <Button
             onClick={() => onDownload(image)}
             disabled={image.processing}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600"
+            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-sm sm:text-base"
           >
             <Download className="h-4 w-4 mr-2" />
             <span>{t('upload.editor.download')}</span>
@@ -80,7 +80,7 @@ export function ImageResult({
             onClick={() => onRemove(image.id)}
             variant="outline"
             size="icon"
-            className="bg-gray-700 hover:bg-gray-600 text-gray-300"
+            className="bg-gray-700 hover:bg-gray-600 text-gray-300 min-w-[44px] min-h-[44px]"
           >
             <Trash2 className="h-4 w-4" />
           </Button>

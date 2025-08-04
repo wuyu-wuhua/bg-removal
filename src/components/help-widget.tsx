@@ -16,19 +16,51 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
+  const [isInitialized, setIsInitialized] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const widgetRef = useRef<HTMLDivElement>(null)
 
-  // 初始化位置到右侧中间
+  // 初始化位置到右侧中间，使用 localStorage 保存位置状态
   useEffect(() => {
     const updatePosition = () => {
-      setPosition({ 
-        x: window.innerWidth - 80, 
-        y: window.innerHeight / 2 - 24 
-      })
+      // 尝试从 localStorage 获取保存的位置
+      const savedPosition = localStorage.getItem('help-widget-position')
+      let initialPosition = { x: 0, y: 0 }
+      
+      if (savedPosition) {
+        try {
+          const parsed = JSON.parse(savedPosition)
+          // 验证保存的位置是否在当前窗口范围内
+          if (parsed.x >= 0 && parsed.y >= 0 && 
+              parsed.x <= window.innerWidth - 60 && 
+              parsed.y <= window.innerHeight - 60) {
+            initialPosition = parsed
+          }
+        } catch (e) {
+          console.warn('Failed to parse saved position:', e)
+        }
+      }
+      
+      // 如果没有保存的位置或位置无效，使用默认位置
+      if (initialPosition.x === 0 && initialPosition.y === 0) {
+        initialPosition = { 
+          x: window.innerWidth - 80, 
+          y: window.innerHeight / 2 - 24 
+        }
+      }
+      
+      // 直接设置位置，不使用动画
+      setPosition(initialPosition)
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight
       })
+      setIsInitialized(true)
+      
+      // 延迟显示，确保位置已经设置完成
+      setTimeout(() => {
+        setIsVisible(true)
+      }, 50)
     }
     
     updatePosition()
@@ -36,6 +68,13 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
     
     return () => window.removeEventListener('resize', updatePosition)
   }, [])
+
+  // 保存位置到 localStorage
+  useEffect(() => {
+    if (isInitialized && position.x > 0 && position.y > 0) {
+      localStorage.setItem('help-widget-position', JSON.stringify(position))
+    }
+  }, [position, isInitialized])
 
   // 使用外部控制或内部状态
   const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen
@@ -160,14 +199,18 @@ export default function HelpWidget({ isOpen: externalIsOpen, onOpenChange }: Hel
       {/* 帮助小球 */}
       <div
         ref={widgetRef}
-        className={`fixed z-50 cursor-pointer transition-all duration-300 ${
+        className={`fixed z-50 cursor-pointer ${
           isDragging ? 'scale-110' : 'hover:scale-110'
         }`}
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
           transform: isDragging ? 'scale(1.1)' : undefined,
-          touchAction: 'none'
+          touchAction: 'none',
+          // 只有在完全初始化后才显示，避免任何动画效果
+          opacity: isVisible ? 1 : 0,
+          // 移除所有过渡动画，确保位置立即生效
+          transition: 'none'
         }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}

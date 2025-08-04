@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { 
   Users, 
   Target, 
@@ -11,7 +10,6 @@ import {
   Shield, 
   Globe, 
   Star,
-  ArrowLeft,
   CheckCircle,
   TrendingUp,
   Lightbulb,
@@ -87,12 +85,6 @@ export default function AboutPage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <div className="flex items-center justify-start mb-8">
-              <Link href="/" className="group flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105">
-                <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {t('about.backToHome')}
-              </Link>
-            </div>
             
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium mb-8 shadow-lg">
@@ -213,11 +205,11 @@ export default function AboutPage() {
               <Clock className="h-4 w-4 mr-2" />
               发展历程
             </div>
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-white dark:to-blue-200 bg-clip-text text-transparent">{t('about.story.title')}</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">{t('about.story.subtitle')}</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-white dark:to-blue-200 bg-clip-text text-transparent">{t('about.story.title')}</h2>
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">{t('about.story.subtitle')}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {(t('about.story.timeline') as any[]).map((timeline, index) => (
               <div key={index} className={`transition-all duration-1000 delay-${(index + 1) * 200} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <Card className="group bg-white dark:bg-gray-800 border-0 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 overflow-hidden">
@@ -332,7 +324,7 @@ export default function AboutPage() {
                 {t('about.cta.startUsing')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 bg-white/10 backdrop-blur-sm">
                 {t('about.cta.contactUs')}
               </Button>
             </div>

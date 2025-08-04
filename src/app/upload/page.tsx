@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Upload, Download, Plus, RotateCcw, RotateCw, Square, Minus, Maximize, Eraser, Palette, Sparkles, ThumbsUp, ThumbsDown, Trash2, Star, Loader2, AlertCircle, CheckCircle, X } from 'lucide-react'
+import { ArrowLeft, Upload, Download, Plus, RotateCw, Square, Minus, Maximize, Eraser, Palette, Sparkles, ThumbsUp, ThumbsDown, Trash2, Star, Loader2, AlertCircle, CheckCircle, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Navbar from '@/components/navbar'
@@ -473,9 +473,9 @@ export default function UploadPage() {
       }
     }, 100)
     
-    // 关闭背景选择器
-    setBackgroundSelectorOpen(false)
-    setBackgroundSelectorExpanded(false) // 关闭展开的背景选择器
+    // 保持背景选择器展开状态，方便用户继续切换背景
+    // setBackgroundSelectorOpen(false)
+    // setBackgroundSelectorExpanded(false) // 关闭展开的背景选择器
   }
 
   // 处理图片合成完成
@@ -505,6 +505,8 @@ export default function UploadPage() {
     setComposedImageUrl(null)
     setShowComposedImage(false)
     setIsUploaded(false)
+    // 保持背景选择器展开状态，方便用户继续使用
+    // setBackgroundSelectorExpanded(false)
   }
 
   // 下载处理后的图片
@@ -597,21 +599,9 @@ export default function UploadPage() {
               <div className="relative w-full max-w-5xl mt-4">
                 {/* 桌面端按钮 - 保持原有布局 */}
                 <div className="hidden md:block">
-                  {/* 重新上传按钮 - 移到左侧 */}
-                  <div className="absolute top-0 left-8 z-20">
-                    <Button
-                      onClick={handleReupload}
-                      variant="outline"
-                      size="sm"
-                      className="bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600 shadow-lg backdrop-blur-sm"
-                    >
-                      <Upload className="w-4 h-4 mr-2" />
-                      {t('upload.editor.reupload')}
-                    </Button>
-                  </div>
                   
-                  {/* 放置背景按钮 - 移到右侧 */}
-                  <div className="absolute top-0 -right-16 z-20">
+                  {/* 放置背景按钮 - 移到内容框外右侧 */}
+                  <div className="absolute top-0 -right-56 z-20">
                     {processedImage && !isProcessing && (
                       <Button 
                         onClick={() => setBackgroundSelectorExpanded(!backgroundSelectorExpanded)}
@@ -680,15 +670,15 @@ export default function UploadPage() {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              console.log('重新生成按钮被点击')
-                              handleReset()
+                              console.log('重新上传按钮被点击')
+                              handleReupload()
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                            title={t('upload.editor.regenerate')}
+                            className="w-12 h-12 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            title={t('upload.editor.reupload')}
                           >
-                            <RotateCcw className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                            <Upload className="h-5 w-5 text-white" />
                           </Button>
                           <Button 
                             onClick={(e) => {
@@ -725,15 +715,15 @@ export default function UploadPage() {
                             onClick={(e) => {
                               e.preventDefault()
                               e.stopPropagation()
-                              console.log('重新生成按钮被点击')
-                              handleReset()
+                              console.log('重新上传按钮被点击')
+                              handleReupload()
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                            title={t('upload.editor.regenerate')}
+                            className="w-12 h-12 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            title={t('upload.editor.reupload')}
                           >
-                            <RotateCcw className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                            <Upload className="h-5 w-5 text-white" />
                           </Button>
                           <Button 
                             onClick={(e) => {
@@ -780,7 +770,7 @@ export default function UploadPage() {
                   
                   {/* 桌面端展开的背景选择器 - 紧挨着右侧按钮 */}
                   {backgroundSelectorExpanded && processedImage && (
-                    <div className="hidden md:block absolute top-12 -right-48 z-20 w-96 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden max-h-[70vh]">
+                    <div className="hidden md:block absolute top-12 -right-80 z-20 w-96 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden max-h-[70vh]">
                       <BackgroundSelector
                         isOpen={true}
                         onClose={() => setBackgroundSelectorExpanded(false)}
@@ -827,6 +817,17 @@ export default function UploadPage() {
                     <div className="flex space-x-6">
                       <div className="flex flex-col items-center space-y-1">
                         <Button 
+                          onClick={handleReupload}
+                          disabled={isProcessing}
+                          size="sm"
+                          className="w-10 h-10 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                        >
+                          <Upload className="h-4 w-4 text-white" />
+                        </Button>
+                        <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{t('upload.editor.reupload')}</span>
+                      </div>
+                      <div className="flex flex-col items-center space-y-1">
+                        <Button 
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
@@ -856,22 +857,6 @@ export default function UploadPage() {
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
-                            console.log('重新生成按钮被点击')
-                            handleReset()
-                          }}
-                          disabled={isProcessing}
-                          size="sm"
-                          className="w-10 h-10 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer backdrop-blur-sm"
-                        >
-                          <RotateCcw className="h-4 w-4 text-gray-700 dark:text-gray-300" />
-                        </Button>
-                        <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{t('upload.editor.regenerate')}</span>
-                      </div>
-                      <div className="flex flex-col items-center space-y-1">
-                        <Button 
-                          onClick={(e) => {
-                            e.preventDefault()
-                            e.stopPropagation()
                             console.log('返回透明背景按钮被点击')
                             handleResetBackground()
                           }}
@@ -882,17 +867,6 @@ export default function UploadPage() {
                           <RotateCw className="h-4 w-4 text-white" />
                         </Button>
                         <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{t('upload.editor.resetToTransparent')}</span>
-                      </div>
-                      <div className="flex flex-col items-center space-y-1">
-                        <Button 
-                          onClick={handleReupload}
-                          disabled={isProcessing}
-                          size="sm"
-                          className="w-10 h-10 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                        >
-                          <Upload className="h-4 w-4 text-white" />
-                        </Button>
-                        <span className="text-xs text-gray-700 dark:text-gray-300 font-medium">{t('upload.editor.reupload')}</span>
                       </div>
                     </div>
                   </div>

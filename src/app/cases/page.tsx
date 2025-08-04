@@ -105,15 +105,15 @@ export default function CasesPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 sm:text-6xl lg:text-7xl">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 lg:text-6xl xl:text-7xl">
               {t('cases.subtitle')}
             </h1>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8">
               {t('cases.description')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Button 
                 onClick={handleStartUsing}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-base font-semibold"

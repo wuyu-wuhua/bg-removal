@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Search, X, Download, Check, Loader2 } from 'lucide-react'
+import { Search, X, Check, Loader2 } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card } from './ui/card'
 import { searchPexelsPhotos, getPopularBackgrounds, getCuratedPhotos, PexelsPhoto } from '@/lib/pexels-api'
@@ -30,8 +30,7 @@ export default function BackgroundSelector({
   const [currentPage, setCurrentPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [downloadStatus, setDownloadStatus] = useState<{success?: boolean, message?: string} | null>(null)
-  const [downloadingId, setDownloadingId] = useState<number | null>(null)
+
 
   // 加载初始背景图片
   useEffect(() => {
@@ -115,90 +114,13 @@ export default function BackgroundSelector({
 
   const handleSelectBackground = (background: PexelsPhoto) => {
     setSelectedBackground(background.src.large)
-    // 立即应用背景
+    // 立即应用背景，但不关闭选择器
     onSelectBackground(background.src.large)
   }
 
-  const handleApplyBackground = () => {
-    // 背景已经在选择时立即应用了，这里只需要关闭选择器
-    onClose()
-  }
 
-  const handleDownloadBackground = async (background: PexelsPhoto) => {
-    setDownloadingId(background.id)
-    setDownloadStatus(null)
-    
-    try {
-      console.log('开始下载背景图片:', background.src.large)
-      
-      // 尝试直接下载
-      const response = await fetch(background.src.large, {
-        mode: 'cors',
-        credentials: 'omit'
-      })
-      
-      if (!response.ok) {
-        throw new Error(`下载失败: ${response.status}`)
-      }
-      
-      const blob = await response.blob()
-      console.log('背景图片下载成功，大小:', blob.size, 'bytes')
-      
-      const url = window.URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `background-${background.id}.jpg`
-      link.style.display = 'none'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      window.URL.revokeObjectURL(url)
-      
-      setDownloadStatus({ success: true, message: '背景图片下载成功！' })
-      setTimeout(() => setDownloadStatus(null), 3000)
-      
-    } catch (error) {
-      console.error('直接下载失败，尝试使用API代理:', error)
-      
-      try {
-        // 使用API代理下载
-        const proxyResponse = await fetch('/api/download-image', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ imageUrl: background.src.large })
-        })
-        
-        if (!proxyResponse.ok) {
-          throw new Error(`API代理下载失败: ${proxyResponse.status}`)
-        }
-        
-        const blob = await proxyResponse.blob()
-        console.log('API代理下载成功，大小:', blob.size, 'bytes')
-        
-        const url = window.URL.createObjectURL(blob)
-        const link = document.createElement('a')
-        link.href = url
-        link.download = `background-${background.id}.jpg`
-        link.style.display = 'none'
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-        window.URL.revokeObjectURL(url)
-        
-        setDownloadStatus({ success: true, message: '背景图片下载成功！' })
-        setTimeout(() => setDownloadStatus(null), 3000)
-        
-      } catch (proxyError) {
-        console.error('API代理下载也失败:', proxyError)
-        setDownloadStatus({ success: false, message: '下载失败，请右键点击图片选择"另存为"' })
-        setTimeout(() => setDownloadStatus(null), 5000)
-      }
-    } finally {
-      setDownloadingId(null)
-    }
-  }
+
+
 
   if (!isOpen) return null
 
@@ -269,22 +191,7 @@ export default function BackgroundSelector({
             </div>
           )}
 
-          {/* Download Status Message */}
-          {downloadStatus && (
-            <div className={`p-3 border ${
-              downloadStatus.success 
-                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800' 
-                : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-            }`}>
-              <p className={`text-xs ${
-                downloadStatus.success 
-                  ? 'text-green-600 dark:text-green-400' 
-                  : 'text-red-600 dark:text-red-400'
-              }`}>
-                {downloadStatus.message}
-              </p>
-            </div>
-          )}
+
 
           {/* Content */}
           <div className="flex-1 overflow-y-auto p-6 max-h-[50vh]">
@@ -320,24 +227,6 @@ export default function BackgroundSelector({
                         <Check className="w-3 h-3 text-white" />
                       </div>
                     )}
-                    
-                    {/* Download Button */}
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      disabled={downloadingId === background.id}
-                      className="absolute bottom-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 w-6 h-6 p-0"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        handleDownloadBackground(background)
-                      }}
-                    >
-                      {downloadingId === background.id ? (
-                        <Loader2 className="w-3 h-3 animate-spin" />
-                      ) : (
-                        <Download className="w-3 h-3" />
-                      )}
-                    </Button>
                   </div>
                 ))}
               </div>
@@ -365,29 +254,7 @@ export default function BackgroundSelector({
             )}
           </div>
 
-          {/* Footer */}
-          <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-            <div className="flex justify-between items-center">
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                {selectedBackground ? '背景已选择' : t('upload.editor.selectBackground')}
-              </div>
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={onClose}
-                  className="px-4 py-2 text-sm"
-                >
-                  取消
-                </Button>
-                <Button
-                  onClick={handleApplyBackground}
-                  className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white"
-                >
-                  完成
-                </Button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     )
@@ -458,22 +325,7 @@ export default function BackgroundSelector({
             </div>
           )}
 
-          {/* Download Status Message */}
-          {downloadStatus && (
-            <div className={`p-4 border ${
-              downloadStatus.success 
-                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800' 
-                : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
-            }`}>
-              <p className={`text-sm ${
-                downloadStatus.success 
-                  ? 'text-green-600 dark:text-green-400' 
-                  : 'text-red-600 dark:text-red-400'
-              }`}>
-                {downloadStatus.message}
-              </p>
-            </div>
-          )}
+
 
           {/* Content */}
           <div className="flex-1 overflow-y-auto p-6">
@@ -509,24 +361,6 @@ export default function BackgroundSelector({
                         <Check className="w-4 h-4 text-white" />
                       </div>
                     )}
-                    
-                    {/* Download Button */}
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      disabled={downloadingId === background.id}
-                      className="absolute bottom-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-800 w-6 h-6 p-0"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        handleDownloadBackground(background)
-                      }}
-                    >
-                      {downloadingId === background.id ? (
-                        <Loader2 className="w-3 h-3 animate-spin" />
-                      ) : (
-                        <Download className="w-3 h-3" />
-                      )}
-                    </Button>
                   </div>
                 ))}
               </div>
@@ -554,29 +388,7 @@ export default function BackgroundSelector({
             )}
           </div>
 
-          {/* Footer */}
-          <div className="p-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-            <div className="flex justify-between items-center">
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                {selectedBackground ? '背景已选择' : t('upload.editor.selectBackground')}
-              </div>
-              <div className="flex gap-3">
-                <Button
-                  variant="outline"
-                  onClick={onClose}
-                  className="px-6 py-2"
-                >
-                  取消
-                </Button>
-                <Button
-                  onClick={handleApplyBackground}
-                  className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white"
-                >
-                  完成
-                </Button>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

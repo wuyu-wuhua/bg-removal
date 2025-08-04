@@ -85,12 +85,7 @@ export default function ServicePage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <div className="flex items-center justify-start mb-8">
-              <Link href="/" className="group flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105">
-                <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {t('policies.service.backToHome')}
-              </Link>
-            </div>
+
             
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full text-sm font-medium mb-8 shadow-lg">

@@ -48,32 +48,40 @@ export default function ImageComposer({
         fgImg.crossOrigin = 'anonymous'
         
         fgImg.onload = () => {
-          // 设置画布尺寸为背景图片尺寸
-          canvas.width = bgImg.width
-          canvas.height = bgImg.height
+          // 设置画布尺寸为前景图片尺寸，确保主体位置不变
+          canvas.width = fgImg.width
+          canvas.height = fgImg.height
           
-          // 绘制背景图片
-          ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
+          // 绘制背景图片，铺满整个画框
+          // 计算背景图片的缩放比例，确保完全覆盖画布
+          const bgAspectRatio = bgImg.width / bgImg.height
+          const canvasAspectRatio = canvas.width / canvas.height
           
-          // 计算前景图片的位置和尺寸，保持比例
-          const fgAspectRatio = fgImg.width / fgImg.height
-          const bgAspectRatio = canvas.width / canvas.height
+          let bgWidth, bgHeight, bgX, bgY
           
-          let fgWidth, fgHeight, fgX, fgY
-          
-          if (fgAspectRatio > bgAspectRatio) {
-            // 前景图片更宽，以宽度为准
-            fgWidth = canvas.width * 0.8 // 占背景宽度的80%
-            fgHeight = fgWidth / fgAspectRatio
-            fgX = (canvas.width - fgWidth) / 2
-            fgY = (canvas.height - fgHeight) / 2
+          if (bgAspectRatio > canvasAspectRatio) {
+            // 背景图片更宽，以高度为准进行缩放
+            bgHeight = canvas.height
+            bgWidth = bgHeight * bgAspectRatio
+            bgX = (canvas.width - bgWidth) / 2
+            bgY = 0
           } else {
-            // 前景图片更高，以高度为准
-            fgHeight = canvas.height * 0.8 // 占背景高度的80%
-            fgWidth = fgHeight * fgAspectRatio
-            fgX = (canvas.width - fgWidth) / 2
-            fgY = (canvas.height - fgHeight) / 2
+            // 背景图片更高，以宽度为准进行缩放
+            bgWidth = canvas.width
+            bgHeight = bgWidth / bgAspectRatio
+            bgX = 0
+            bgY = (canvas.height - bgHeight) / 2
           }
+          
+          // 绘制背景图片，确保铺满整个画框
+          ctx.drawImage(bgImg, bgX, bgY, bgWidth, bgHeight)
+          
+          // 保持前景图片的原始位置和尺寸，不进行居中调整
+          // 这样在更换背景时主体位置保持不变
+          const fgWidth = fgImg.width
+          const fgHeight = fgImg.height
+          const fgX = 0
+          const fgY = 0
           
           // 绘制前景图片
           ctx.drawImage(fgImg, fgX, fgY, fgWidth, fgHeight)

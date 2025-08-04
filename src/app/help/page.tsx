@@ -122,12 +122,7 @@ export default function HelpPage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            <div className="flex items-center justify-start mb-8">
-              <Link href="/" className="group flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105">
-                <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-                {t('help.backToHome')}
-              </Link>
-            </div>
+
             
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium mb-8 shadow-lg">
@@ -164,12 +159,12 @@ export default function HelpPage() {
       {/* Help Categories */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('help.categories.title')}</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">{t('help.categories.subtitle')}</p>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">{t('help.categories.title')}</h2>
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300">{t('help.categories.subtitle')}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {getHelpCategories(t).map((category: any, index: number) => (
               <div 
                 key={index}

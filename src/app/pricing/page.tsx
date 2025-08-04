@@ -179,9 +179,9 @@ function PricingPageContent() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                  {/* Title Section */}
-         <div className="text-center mb-16">
-           <h1 className="text-4xl font-bold mb-4">{t('pricing.title')}</h1>
-           <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+         <div className="text-center mb-12 sm:mb-16">
+           <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4">{t('pricing.title')}</h1>
+           <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
              {t('pricing.subtitle')}
            </p>
            {user && credits && (
@@ -194,8 +194,8 @@ function PricingPageContent() {
          </div>
 
                  {/* Pricing Cards */}
-         <div className="w-full mb-20">
-           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+         <div className="w-full mb-16 sm:mb-20">
+           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
              {pricingPlans.map((plan, index) => (
                <Card key={index} className={`items-stretch rounded-xl border shadow-xs relative flex h-full min-h-[600px] min-w-[320px] flex-col bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:scale-105 hover:border-blue-300 dark:hover:border-blue-400 ${plan.popular ? 'scale-105 border-blue-500 dark:border-blue-400 shadow-md shadow-blue-500/20 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30' : ''}`}>
                  {plan.popular && (

@@ -282,32 +282,32 @@ export default function DashboardPage() {
           </div>
 
           {/* 页面标题 */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">
               {t('dashboard.title')}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400">
               {t('dashboard.subtitle')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* 左侧主要内容区域 */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-6 sm:space-y-8">
               {/* 用户信息卡片 */}
               <Card className="bg-white/80 dark:bg-gray-800/80 border-gray-200 dark:border-gray-700 backdrop-blur-sm shadow-2xl">
-                <CardContent className="p-8">
-                  <div className="flex items-center space-x-6">
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-3xl font-bold text-white">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-2xl sm:text-3xl font-bold text-white">
                         {user.user_metadata?.full_name?.charAt(0) || user.email?.charAt(0) || 'U'}
                       </span>
                     </div>
-                    <div className="flex-1">
-                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <div className="flex-1 text-center sm:text-left">
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
                         {user.user_metadata?.full_name || t('dashboard.welcome')}
                       </h2>
-                      <p className="text-gray-600 dark:text-gray-400 text-lg">
+                      <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
                         {user.email}
                       </p>
                     </div>
@@ -316,7 +316,7 @@ export default function DashboardPage() {
               </Card>
 
               {/* 积分概览卡片 */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 <Card className="bg-white/80 dark:bg-gray-800/80 border-gray-200 dark:border-gray-700 backdrop-blur-sm shadow-xl">
                   <CardContent className="p-6 text-center">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{t('dashboard.creditOverview.currentCredits')}</h3>

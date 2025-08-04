@@ -39,7 +39,7 @@ export function UploadZone({ onFilesSelected, className }: UploadZoneProps) {
   return (
     <div
       className={cn(
-        "border-2 border-dashed rounded-xl p-12 text-center transition-all duration-300",
+        "border-2 border-dashed rounded-xl p-6 sm:p-8 lg:p-12 text-center transition-all duration-300",
         isDragOver
           ? "border-blue-500 bg-blue-500/10 scale-105"
           : "border-gray-600 hover:border-gray-500 hover:bg-gray-800/50",
@@ -50,22 +50,22 @@ export function UploadZone({ onFilesSelected, className }: UploadZoneProps) {
       onDragLeave={handleDragLeave}
     >
       <div className="flex flex-col items-center space-y-4">
-        <div className="bg-gray-800 p-6 rounded-full">
-          <Upload className="h-12 w-12 text-gray-400" />
+        <div className="bg-gray-800 p-4 sm:p-6 rounded-full">
+          <Upload className="h-8 w-8 sm:h-12 sm:w-12 text-gray-400" />
         </div>
         <div>
-          <h3 className="text-2xl font-semibold text-white mb-2">
+          <h3 className="text-xl sm:text-2xl font-semibold text-white mb-2">
             拖拽图片到这里
           </h3>
-          <p className="text-gray-400 text-lg mb-6">
+          <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6">
             或点击选择文件
           </p>
           <Button
             onClick={() => fileInputRef.current?.click()}
             size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 font-semibold"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 font-semibold text-sm sm:text-base"
           >
-            <ImageIcon className="h-5 w-5 mr-2" />
+            <ImageIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
             <span>选择图片</span>
           </Button>
         </div>

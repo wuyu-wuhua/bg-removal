@@ -175,19 +175,19 @@ export default function HomePage() {
                   </span>
                 </div>
                 
-                <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl">
+                <h1 className="mb-4 sm:mb-6 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-6xl xl:text-7xl">
                   <span className="block">{t('home.hero.mainTitle')}</span>
                   <span className="block bg-gradient-to-r from-blue-600 to-blue-400 dark:from-blue-400 dark:to-blue-300 bg-clip-text text-transparent">{t('home.hero.subTitle')}</span>
                 </h1>
                 
-                <p className="mx-auto mb-10 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-300 sm:text-xl">
+                <p className="mx-auto mb-8 sm:mb-10 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-gray-600 dark:text-gray-300 lg:text-xl">
                   {t('home.hero.description')}
                 </p>
                 
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+                <div className="flex flex-col items-center justify-center gap-3 sm:gap-4 sm:flex-row lg:gap-6">
             <Button 
               onClick={handleStartUsing}
-                    className="group px-8 py-3 text-base font-semibold"
+                    className="group px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold"
             >
                     {t('home.hero.ctaPrimary')}
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -195,7 +195,7 @@ export default function HomePage() {
             <Button 
               variant="outline" 
                     onClick={handleViewCases}
-                    className="px-8 py-3 text-base font-semibold bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white border-gray-300 dark:border-gray-600"
+                    className="px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-semibold bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-white border-gray-300 dark:border-gray-600"
             >
               {t('home.hero.ctaSecondary')}
             </Button>
