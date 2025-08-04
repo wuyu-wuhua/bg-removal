@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     siteName: 'Remover Fundo',
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/og-comparison.png',
         width: 1200,
         height: 630,
-        alt: 'Remover Fundo - AI Image Processing Platform',
+        alt: 'Remover Fundo - Before and After AI Image Processing Comparison',
       },
     ],
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Remover Fundo - AI Image Processing Platform',
     description: 'Remover Fundo professional AI image processing platform, providing precise background removal, object segmentation, and image enhancement services.',
-    images: ['/images/logo.png'],
+    images: ['/images/og-comparison.png'],
   },
   icons: {
     icon: '/images/logo.png',
