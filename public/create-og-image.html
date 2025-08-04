@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成Open Graph图片</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        canvas {
+            border: 2px solid #ddd;
+            margin: 20px auto;
+            display: block;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>生成Open Graph对比图片</h1>
+        <p>点击按钮生成并下载对比图片</p>
+        <button onclick="generateImage()">生成图片</button>
+        <button onclick="downloadImage()">下载图片</button>
+        <br>
+        <canvas id="canvas" width="1200" height="630"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function generateImage() {
+            const originalImg = new Image();
+            const processedImg = new Image();
+            
+            originalImg.onload = function() {
+                processedImg.onload = function() {
+                    drawComparison();
+                };
+                processedImg.src = '/images/外国男人后.jpg';
+            };
+            originalImg.src = '/images/外国男人.jpg';
+        }
+        
+        function drawComparison() {
+            const canvasWidth = 1200;
+            const canvasHeight = 630;
+            
+            // 清空画布
+            ctx.fillStyle = '#f8f8f8';
+            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+            
+            // 计算图片尺寸和位置
+            const imgAspectRatio = originalImg.width / originalImg.height;
+            const canvasAspectRatio = canvasWidth / canvasHeight;
+            
+            let imgWidth, imgHeight, imgX, imgY;
+            
+            if (imgAspectRatio > canvasAspectRatio) {
+                imgWidth = canvasWidth;
+                imgHeight = canvasWidth / imgAspectRatio;
+                imgX = 0;
+                imgY = (canvasHeight - imgHeight) / 2;
+            } else {
+                imgHeight = canvasHeight;
+                imgWidth = canvasHeight * imgAspectRatio;
+                imgX = (canvasWidth - imgWidth) / 2;
+                imgY = 0;
+            }
+            
+            // 绘制原图（左侧）
+            ctx.drawImage(originalImg, imgX, imgY, imgWidth, imgHeight);
+            
+            // 绘制处理后图片（右侧）
+            const splitX = imgX + imgWidth / 2;
+            ctx.save();
+            ctx.beginPath();
+            ctx.rect(splitX, imgY, imgWidth / 2, imgHeight);
+            ctx.clip();
+            ctx.drawImage(processedImg, imgX, imgY, imgWidth, imgHeight);
+            ctx.restore();
+            
+            // 绘制分割线
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(splitX, imgY);
+            ctx.lineTo(splitX, imgY + imgHeight);
+            ctx.stroke();
+            
+            // 绘制滑块
+            const sliderSize = 40;
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#007bff';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(splitX, imgY + imgHeight / 2, sliderSize / 2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.stroke();
+            
+            // 绘制滑块图标
+            ctx.fillStyle = '#007bff';
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('↔', splitX, imgY + imgHeight / 2);
+            
+            // 绘制标签
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 2;
+            ctx.font = 'bold 36px Arial';
+            ctx.textAlign = 'center';
+            
+            // Before 标签
+            const beforeX = imgX + (splitX - imgX) / 2;
+            const beforeY = imgY + 50;
+            ctx.strokeText('BEFORE', beforeX, beforeY);
+            ctx.fillText('BEFORE', beforeX, beforeY);
+            
+            // After 标签
+            const afterX = splitX + (imgX + imgWidth - splitX) / 2;
+            const afterY = imgY + 50;
+            ctx.strokeText('AFTER', afterX, afterY);
+            ctx.fillText('AFTER', afterX, afterY);
+            
+            // 绘制品牌信息
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3;
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            
+            const brandY = imgY + imgHeight - 50;
+            ctx.strokeText('Remover Fundo', canvasWidth / 2, brandY);
+            ctx.fillText('Remover Fundo', canvasWidth / 2, brandY);
+            
+            // 绘制副标题
+            ctx.font = '24px Arial';
+            const subtitleY = brandY + 40;
+            ctx.strokeText('AI Image Processing Platform', canvasWidth / 2, subtitleY);
+            ctx.fillText('AI Image Processing Platform', canvasWidth / 2, subtitleY);
+        }
+        
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'og-comparison.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // 页面加载时自动生成图片
+        window.onload = function() {
+            generateImage();
+        };
+    </script>
+</body>
+</html> 
