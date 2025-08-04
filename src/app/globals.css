@@ -576,6 +576,17 @@
   animation: marquee-reverse var(--duration, 40s) linear infinite;
 }
 
+/* 确保跑马灯暂停功能正常工作 */
+.hover\:\[animation-play-state\:paused\]:hover {
+  animation-play-state: paused !important;
+}
+
+/* 为跑马灯容器添加更好的悬停支持 */
+.marquee-container:hover .animate-marquee,
+.marquee-container:hover .animate-marquee-reverse {
+  animation-play-state: paused !important;
+}
+
 /* Accordion animations */
 @keyframes accordion-down {
   from {
@@ -626,8 +637,8 @@
     opacity: 1 !important;
   }
   
-  /* 防止CSS动画影响录屏 */
-  * {
+  /* 防止CSS动画影响录屏，但保留跑马灯暂停功能 */
+  *:not(.hover\:\[animation-play-state\:paused\]) {
     animation-play-state: running !important;
     transition-duration: 0.1s !important;
   }

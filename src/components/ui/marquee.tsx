@@ -14,21 +14,29 @@ const Marquee = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex overflow-hidden [--duration:40s] [--gap:1rem]",
+        "flex overflow-hidden [--duration:40s] [--gap:1rem] marquee-container",
         className
       )}
       {...props}
     >
-      <div
-        className={cn(
-          "flex w-max items-stretch gap-[--gap]",
-          pauseOnHover && "hover:[animation-play-state:paused]",
-          reverse ? "animate-marquee-reverse" : "animate-marquee"
-        )}
-        style={{
-          "--duration": "var(--duration, 40s)",
-        } as React.CSSProperties}
-      >
+              <div
+          className={cn(
+            "flex w-max items-stretch gap-[--gap]",
+            pauseOnHover && "hover:[animation-play-state:paused] group",
+            reverse ? "animate-marquee-reverse" : "animate-marquee"
+          )}
+          style={{
+            "--duration": "var(--duration, 40s)",
+          } as React.CSSProperties}
+          onMouseEnter={pauseOnHover ? (e) => {
+            const target = e.currentTarget as HTMLElement;
+            target.style.animationPlayState = 'paused';
+          } : undefined}
+          onMouseLeave={pauseOnHover ? (e) => {
+            const target = e.currentTarget as HTMLElement;
+            target.style.animationPlayState = 'running';
+          } : undefined}
+        >
         {children}
         {children}
         {children}
