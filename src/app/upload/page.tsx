@@ -586,7 +586,7 @@ export default function UploadPage() {
 
   if (isUploaded && uploadedImage) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
+      <div className="min-h-screen bg-transparent flex flex-col">
         <Navbar currentPage="upload" theme={theme} onThemeToggle={toggleTheme} />
         
         <main className="flex-1 flex min-h-0">
@@ -595,7 +595,7 @@ export default function UploadPage() {
 
 
             {/* 图片显示区域 */}
-            <div className="flex-1 flex items-start justify-center p-4 bg-gray-50 dark:bg-gray-800 min-h-0">
+            <div className="flex-1 flex items-start justify-center p-4 bg-transparent min-h-0">
               <div className="relative w-full max-w-5xl mt-4">
                 {/* 桌面端按钮 - 保持原有布局 */}
                 <div className="hidden md:block">
@@ -623,7 +623,7 @@ export default function UploadPage() {
                         <img 
                           src={uploadedImage} 
                           alt={t('upload.editor.originalImageAlt')} 
-                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain rounded-lg shadow-lg"
+                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain"
                         />
                       </div>
                     )}
@@ -633,10 +633,10 @@ export default function UploadPage() {
                         <img 
                           src={uploadedImage} 
                           alt={t('upload.editor.originalImageAlt')} 
-                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain rounded-lg shadow-lg opacity-50"
+                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain opacity-50"
                         />
                         {/* 加载动画覆盖层 */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 rounded-lg">
+                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                           <div className="text-center">
                             <Loader2 className="h-16 w-16 animate-spin text-white mx-auto mb-4" />
                             <p className="text-white text-lg font-semibold">{t('upload.editor.processing')}</p>
@@ -648,7 +648,7 @@ export default function UploadPage() {
                                         {processedImage && !isProcessing && !showComposedImage && (
                       <div className="relative">
                         {/* 透明背景网格 - 放在最底层 */}
-                        <div className="absolute inset-0 opacity-20 pointer-events-none rounded-lg z-0" 
+                        <div className="absolute inset-0 opacity-20 pointer-events-none z-0" 
                              style={{
                                backgroundImage: `linear-gradient(45deg, #ccc 25%, transparent 25%), 
                                                  linear-gradient(-45deg, #ccc 25%, transparent 25%), 
@@ -661,7 +661,7 @@ export default function UploadPage() {
                         <img 
                           src={processedImage} 
                           alt={t('upload.editor.processedImageAlt')} 
-                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain relative z-10 rounded-lg shadow-lg pointer-events-none"
+                          className="w-full max-h-[50vh] md:max-h-[70vh] object-contain relative z-10 pointer-events-none"
                         />
                         
                         {/* 桌面端右下角圆形按钮 */}
@@ -675,10 +675,10 @@ export default function UploadPage() {
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer backdrop-blur-sm border border-white/30"
                             title={t('upload.editor.reupload')}
                           >
-                            <Upload className="h-5 w-5 text-white" />
+                            <Upload className="h-5 w-5 text-black" />
                           </Button>
                           <Button 
                             onClick={(e) => {
@@ -689,10 +689,10 @@ export default function UploadPage() {
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer backdrop-blur-sm border border-white/30"
                             title={t('upload.editor.download')}
                           >
-                            <Download className="h-5 w-5 text-white" />
+                            <Download className="h-5 w-5 text-black" />
                           </Button>
                         </div>
                         
@@ -720,10 +720,10 @@ export default function UploadPage() {
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-orange-600 hover:bg-orange-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer backdrop-blur-sm border border-white/30"
                             title={t('upload.editor.reupload')}
                           >
-                            <Upload className="h-5 w-5 text-white" />
+                            <Upload className="h-5 w-5 text-black" />
                           </Button>
                           <Button 
                             onClick={(e) => {
@@ -734,10 +734,10 @@ export default function UploadPage() {
                             }}
                             disabled={isProcessing}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                            className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer backdrop-blur-sm border border-white/30"
                             title={t('upload.editor.download')}
                           >
-                            <Download className="h-5 w-5 text-white" />
+                            <Download className="h-5 w-5 text-black" />
                           </Button>
                           <Button 
                             onClick={(e) => {
@@ -747,10 +747,10 @@ export default function UploadPage() {
                               handleResetBackground()
                             }}
                             size="sm"
-                            className="w-12 h-12 rounded-full bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                            className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer backdrop-blur-sm border border-white/30"
                             title={t('upload.editor.resetToTransparent')}
                           >
-                            <RotateCw className="h-5 w-5 text-white" />
+                            <RotateCw className="h-5 w-5 text-black" />
                           </Button>
                         </div>
                         

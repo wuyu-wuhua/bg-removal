@@ -130,7 +130,7 @@ export default function ImageComposer({
       
       {/* 显示合成结果 */}
       {isComposing ? (
-        <div className="flex items-center justify-center h-[70vh] bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <div className="flex items-center justify-center h-[70vh] bg-transparent">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600 dark:text-gray-400 text-lg">正在合成图片...</p>
@@ -141,12 +141,12 @@ export default function ImageComposer({
           <img
             src={composedImageUrl}
             alt="合成后的图片"
-            className="w-full max-h-[70vh] object-contain rounded-lg shadow-lg"
+            className="w-full max-h-[70vh] object-contain"
           />
 
         </div>
       ) : (
-        <div className="flex items-center justify-center h-[70vh] bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <div className="flex items-center justify-center h-[70vh] bg-transparent">
           <p className="text-gray-600 dark:text-gray-400 text-lg">准备合成图片...</p>
         </div>
       )}
