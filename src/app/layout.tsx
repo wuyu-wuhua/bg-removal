@@ -51,6 +51,9 @@ export const metadata: Metadata = {
     icon: '/images/logo.png',
     apple: '/images/logo.png',
   },
+  verification: {
+    google: 'pZ60H5LQnT63mobooCaSeL42w2efOEwRDDWmevPzA6k',
+  },
 }
 
 export default function RootLayout({
